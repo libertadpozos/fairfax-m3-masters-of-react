@@ -6,11 +6,10 @@ import Collapsibles from './components/Collapsibles';
 
 class App extends Component {
   render() {
-    <Collapsibles
-      title = "Diseña"
-    />
+
     return (
-      <div className='App'>
+    <div className='App'>
+        <Collapsibles title="Diseña"/>
      <header className='header wrapper'>
        <section className='header--container main-container'>
          <a href='index.html'>
@@ -49,7 +48,7 @@ class App extends Component {
                    </div>
                    <div
                      className='user--profile__pic js__profile-image profile__image'
-                     style='background-image:url(assets/images/default-profile-pic.png)'
+                    //  style='background-image:url(assets/images/default-profile-pic.png)'
                    />
 
                    <div className='contact__link'>
@@ -94,7 +93,7 @@ class App extends Component {
                <legend className='legend closed'>
                  <i className='far fa-object-ungroup fa-lg legend__icon' />
 
-                 <h2 className='legend__title'>Diseña</h2>
+                 <h2 className='legend__title'>{this.props.title}</h2>
                  <i className='fas fa-chevron-up legend__arrow' />
                </legend>
                <label
