@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './scss/main.scss';
+import Collapsibles from './components/Collapsibles';
+
 
 class App extends Component {
   render() {
+    <Collapsibles
+      title = "Diseña"
+    />
     return (
       <div className="App">
         <div className="App-header">

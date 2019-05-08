@@ -1,22 +1,26 @@
-import React from React;
+import React from 'react';
 
-class Collapsibles extends React.Component { 
-    render(){
-        return(
-    <legend className="legend closed"> <i className="far fa-object-ungroup fa-lg legend__icon"></i>
-  
+class Collapsibles extends React.Component {
+  render() {
+    return (
+      <legend className="legend closed">
+        {' '}
+        <i className="far fa-object-ungroup fa-lg legend__icon" />
         <h2 className="legend__title">Diseña</h2>
-        <i className="fas fa-chevron-up legend__arrow"></i>
-    </legend>
-        );
-    }
+        <i className="fas fa-chevron-up legend__arrow" />
+      </legend>
+    );
+  }
 }
 
 export default Collapsibles;
 
-
 // PLAN ****
- {/* cambiar class del primer icono  */} 
-        
-    {/* cambiar inner de h2 */}
-    // El contenido será un prop
+{
+  /* cambiar class del primer icono  */
+}
+
+{
+  /* cambiar inner de h2 */
+}
+// El contenido será un prop
