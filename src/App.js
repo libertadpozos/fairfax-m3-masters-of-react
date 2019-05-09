@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CardHeader from './components/CardHeader';
 
 class App extends Component {
   render() {
@@ -37,15 +38,10 @@ class App extends Component {
                     </div>
 
                     <div className='card-preview palette--1'>
-                      <div className='card--header'>
-                        <div className='sidebar bg__light' />
-                        <div className='main--data'>
-                          <p className='full-name txt__dark'>
-                            Nombre de prueba
-                          </p>
-                          <p className='occupation txt__medium' />
-                        </div>
-                      </div>
+                      <CardHeader 
+                        defaultName='Nombre de prueba' 
+                        defaultJob='Front-end developer'
+                      />
                       {/* <div
                      className='user--profile__pic js__profile-image profile__image' style='background-image:url(assets/images/default-profile-pic.png)'></div> */}
                       <div className='user--profile__pic js__profile-image profile__image' />
