@@ -1,7 +1,12 @@
-import React, { Component } from 'react';
+import React from 'react';
+import logoAdalab from './images/logo-adalab.png';
+import logoTeam from './images/octomeow.png';
+import logoCard from './images/tarjetas-molonas.svg';
+import FillInItem from './components/FillInItem';
 
-class App extends Component {
+class App extends React.Component {
   render() {
+    //const { logoCard, logoAdalab } = this.props;
     return (
       <div className='App'>
         <header className='header wrapper'>
@@ -9,13 +14,12 @@ class App extends Component {
             <a href='index.html'>
               <img
                 className='logo'
-                src='assets/images/tarjetas-molonas.svg'
+                src={logoCard}
                 alt='logo awesome profile cards'
               />
             </a>
           </section>
         </header>
-
         <main className='cards__container'>
           <form className='form' action='' method='POST'>
             <div className='wrapper'>
@@ -23,7 +27,7 @@ class App extends Component {
                 <section className='preview-container'>
                   <div className='button-container'>
                     <div className='reset-button'>
-                      <label for='reset' className='visually-hidden'>
+                      <label htmlFor='reset' className='visually-hidden'>
                         Botón de borrar
                       </label>
                       <button
@@ -96,8 +100,8 @@ class App extends Component {
                     <i className='fas fa-chevron-up legend__arrow' />
                   </legend>
                   <label
-                    className='option__distribution hidden collapsibles'
-                    for='colors'
+                    className='option__distribution collapsibles'
+                    htmlFor='colors'
                   >
                     <p className='option__title legend__subtitle'>Colores</p>
                     <div className='option__container'>
@@ -109,7 +113,7 @@ class App extends Component {
                             id='colors'
                             name='palette'
                             value='1'
-                            checked
+                            defaultChecked
                           />
                           <span className='checkmark' id='p1' />
                         </div>
@@ -163,34 +167,25 @@ class App extends Component {
                     <h2 className='legend__title'>Rellena</h2>
                     <i className='fas fas fa-chevron-up legend__arrow' />
                   </legend>
-                  <div className='fill-in__items hidden collapsibles'>
+                  <div className='fill-in__items collapsibles'>
+                    <FillInItem
+                      forId='full_name'
+                      labelName='Nombre completo'
+                      type='text'
+                      name='name'
+                      place='Sally Jill'
+                    />
+
+                    <FillInItem
+                      forId='job'
+                      labelName='Puesto'
+                      type='text'
+                      name='job'
+                      place='Front-end'
+                    />
+
                     <div className='fill-in__item'>
-                      <label className='fill-in__label' for='full_name'>
-                        Nombre completo
-                      </label>
-                      <input
-                        className='fill-in__input input-update'
-                        id='full_name'
-                        type='text'
-                        name='name'
-                        placeholder='Sally Jill'
-                        required
-                      />
-                    </div>
-                    <div className='fill-in__item'>
-                      <label className='fill-in__label' for='job'>
-                        Puesto
-                      </label>
-                      <input
-                        className='fill-in__input input-update'
-                        id='job'
-                        type='text'
-                        name='job'
-                        placeholder='Front-end'
-                      />
-                    </div>
-                    <div className='fill-in__item'>
-                      <label className='fill-in__label' for='img-profile'>
+                      <label className='fill-in__label' htmlFor='img-profile'>
                         Imagen de perfil
                       </label>
                       <div className='fill-in__buttonImg-wrapper'>
@@ -210,55 +205,38 @@ class App extends Component {
                         <div className='img-profile__preview js__profile-preview profile__preview' />
                       </div>
                     </div>
-                    <div className='fill-in__item'>
-                      <label className='fill-in__label' for='phone'>
-                        Teléfono
-                      </label>
-                      <input
-                        className='fill-in__input input__tel input-update'
-                        id='phone'
-                        type='tel'
-                        minlength='9'
-                        name='phone'
-                        placeholder='612345698'
-                      />
-                    </div>
-                    <div className='fill-in__item'>
-                      <label className='fill-in__label' for='email'>
-                        Email
-                      </label>
-                      <input
-                        className='fill-in__input input-update'
-                        id='email'
-                        type='email'
-                        name='email'
-                        placeholder='sally-jill@gmail.com'
-                      />
-                    </div>
-                    <div className='fill-in__item'>
-                      <label className='fill-in__label' for='linkedin'>
-                        Linkedin
-                      </label>
-                      <input
-                        className='fill-in__input input-update'
-                        id='linkedin'
-                        type='text'
-                        name='linkedin'
-                        placeholder='sallyhill'
-                      />
-                    </div>
-                    <div className='fill-in__item'>
-                      <label className='fill-in__label' for='github'>
-                        Github
-                      </label>
-                      <input
-                        className='fill-in__input input-update'
-                        id='github'
-                        type='text'
-                        name='github'
-                        placeholder='sally-hill'
-                      />
-                    </div>
+
+                    <FillInItem
+                      forId='phone'
+                      labelName='Teléfono'
+                      type='tel'
+                      name='phone'
+                      place='612345698'
+                    />
+
+                    <FillInItem
+                      forId='email'
+                      labelName='Email'
+                      type='email'
+                      name='email'
+                      place='sally-jill@gmail.com'
+                    />
+
+                    <FillInItem
+                      forId='linkedin'
+                      labelName='Linkedin'
+                      type='text'
+                      name='linkedin'
+                      place='sallyhill'
+                    />
+
+                    <FillInItem
+                      forId='github'
+                      labelName='Github'
+                      type='text'
+                      name='github'
+                      place='sally-hill'
+                    />
                   </div>
                 </fieldset>
                 <fieldset className='form__share'>
@@ -268,7 +246,7 @@ class App extends Component {
                     <h2 className='legend__title'>Comparte</h2>
                     <i className='fas fa-chevron-up legend__arrow' />
                   </legend>
-                  <div className='share__container hidden collapsibles'>
+                  <div className='share__container collapsibles'>
                     <button className='share-button' type='button'>
                       <i className='far fa-address-card' /> Crear tarjeta
                     </button>
@@ -298,13 +276,13 @@ class App extends Component {
                 Awesome profile-cards © 2019
               </li>
               <li className='main-footer__list-adalab'>
-                <img src='assets/images/logo-adalab.png' alt='Imagen Adalab' />
+                <img src={logoAdalab} alt='Imagen Adalab' />
               </li>
               <li className='main-footer__list-logo'>
                 <a href='.' title='Link to Home'>
                   <img
                     className='main-footer__list-img'
-                    src='assets/images/octomeow.png'
+                    src={logoTeam}
                     alt='Imagen Octomeow'
                   />
                 </a>
