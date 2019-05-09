@@ -41,20 +41,21 @@ class App extends Component {
                     <div className='card-preview palette--1'>
                       <div className='card--header'>
                         <div className='sidebar bg__light' />
-                        <div className='main--data'>
-                          <p className='full-name txt__dark'>
-                            Nombre de prueba
-                          </p>
-                          <p className='occupation txt__medium' />
+                          <div className='main--data'>
+                            <p className='full-name txt__dark'>Nombre de prueba</p>
+                            <p className='occupation txt__medium' />
+                          </div>
                         </div>
-                      </div>
                       {/* <div
                      className='user--profile__pic js__profile-image profile__image' style='background-image:url(assets/images/default-profile-pic.png)'></div> */}
-                      <div className='user--profile__pic js__profile-image profile__image' /></div>
-                      <div className='contact__link'>
-                        <SocialMediaList />
+                      <div className='user--profile__pic js__profile-image profile__image' />
+                        <div className='contact__link'>
+                          <SocialMediaList />
+                        </div>
                       </div>
                   </div>
+
+
                 </section>
               </fieldset>
               <div className='form__content'>
