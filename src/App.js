@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import RadioButtonsList from './components/RadioButtonsList';
+import SocialMediaList from './components/SocialMediaList';
 
 class App extends Component {
   render() {
@@ -50,41 +51,8 @@ class App extends Component {
                       {/* <div
                      className='user--profile__pic js__profile-image profile__image' style='background-image:url(assets/images/default-profile-pic.png)'></div> */}
                       <div className='user--profile__pic js__profile-image profile__image' />
-
-                      <div className='contact__link'>
-                        <ul className='contact__list'>
-                          <li className='contact__list--rrss pad--mobile border__medium'>
-                            <a
-                              href='/'
-                              className='icon__link--mobile txt__dark'
-                              title=''
-                              id='linkMobile'
-                            >
-                              <i className='contact__list--icon fas fa-mobile-alt' />
-                            </a>
-                          </li>
-                          <li className='contact__list--rrss border__medium'>
-                            <a className='email txt__dark' href='/'>
-                              <i className='contact__list--icon far fa-envelope' />
-                            </a>
-                          </li>
-                          <li className='contact__list--rrss border__medium'>
-                            <a
-                              href='/'
-                              id='linkEdin'
-                              className='link__linkedin txt__dark'
-                            >
-                              <i className='contact__list--icon fab fa-linkedin-in' />
-                            </a>
-                          </li>
-                          <li className='contact__list--rrss border__medium'>
-                            <a href='/' id='linkGithub' className='txt__dark'>
-                              <i className='contact__list--icon fab fa-github-alt' />
-                            </a>
-                          </li>
-                        </ul>
+                        <SocialMediaList />
                       </div>
-                    </div>
                   </div>
                 </section>
               </fieldset>
