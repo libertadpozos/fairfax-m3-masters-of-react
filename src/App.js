@@ -50,7 +50,8 @@ class App extends Component {
                       </div>
                       {/* <div
                      className='user--profile__pic js__profile-image profile__image' style='background-image:url(assets/images/default-profile-pic.png)'></div> */}
-                      <div className='user--profile__pic js__profile-image profile__image' />
+                      <div className='user--profile__pic js__profile-image profile__image' /></div>
+                      <div className='contact__link'>
                         <SocialMediaList />
                       </div>
                   </div>
