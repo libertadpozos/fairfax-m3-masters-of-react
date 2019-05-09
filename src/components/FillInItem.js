@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 class FillInItem extends React.Component {
   render() {
-    //const {for} = this.props;
 
     return (
       <div className='fill-in__item'>
