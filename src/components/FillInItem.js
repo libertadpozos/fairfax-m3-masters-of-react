@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React from 'react';
+
 class FillInItem extends React.Component {
   render() {
-
     return (
       <div className='fill-in__item'>
         <label className='fill-in__label' htmlFor={this.props.forId}>
