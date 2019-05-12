@@ -47,16 +47,9 @@ class App extends React.Component {
                           <p className="occupation txt__medium" />
                         </div>
                       </div>
-<<<<<<< HEAD
                       {/* <div
                      className='user--profile__pic js__profile-image profile__image' style='background-image:url(assets/images/default-profile-pic.png)'></div> */}
                       <div className="user--profile__pic js__profile-image profile__image" />
-=======
-                      <div
-                        className="user--profile__pic js__profile-image profile__image"
-                        //  style='backgroundImage:url(assets/images/default-profile-pic.png)'
-                      />
->>>>>>> f4c438b620a8155d2a174c82024802819c28e6f7
 
                       <div className="contact__link">
                         <ul className="contact__list">
@@ -97,27 +90,12 @@ class App extends React.Component {
               </fieldset>
               <div className="form__content">
                 <fieldset className="form__design">
-<<<<<<< HEAD
                   <legend className="legend closed">
                     <i className="far fa-object-ungroup fa-lg legend__icon" />
 
                     <h2 className="legend__title">Diseña</h2>
                     <i className="fas fa-chevron-up legend__arrow" />
                   </legend>
-=======
-                  {/* <legend className='legend closed'>
-                    <i className='far fa-object-ungroup fa-lg legend__icon' />
-
-                 <h2 className='legend__title'>Diseña</h2>
-                 <i className='fas fa-chevron-up legend__arrow' />
-               </legend> */}
-                  <Collapsibles 
-                  title="Diseña" 
-                  icon = "far fa-object-ungroup fa-lg legend__icon"
-                  
-                  />
-
->>>>>>> f4c438b620a8155d2a174c82024802819c28e6f7
                   <label
                     className="option__distribution hidden collapsibles"
                     for="colors"
@@ -180,24 +158,12 @@ class App extends React.Component {
                   </label>
                 </fieldset>
                 <fieldset className="form__fill-in">
-<<<<<<< HEAD
                   <legend className="legend closed">
-=======
-                  {/* <legend className="legend closed">
->>>>>>> f4c438b620a8155d2a174c82024802819c28e6f7
                     <i className="far fa-keyboard legend__icon" />
 
                     <h2 className="legend__title">Rellena</h2>
                     <i className="fas fas fa-chevron-up legend__arrow" />
-<<<<<<< HEAD
                   </legend>
-=======
-                  </legend> */}
-                  <Collapsibles 
-                  title="Rellena"
-                  icon= "far fa-keyboard legend__icon" />
-
->>>>>>> f4c438b620a8155d2a174c82024802819c28e6f7
                   <div className="fill-in__items hidden collapsibles">
                     <div className="fill-in__item">
                       <label className="fill-in__label" for="full_name">
@@ -229,18 +195,9 @@ class App extends React.Component {
                         Imagen de perfil
                       </label>
                       <div className="fill-in__buttonImg-wrapper">
-<<<<<<< HEAD
                         <AddImageButton
                           className="fill-in__button fill-in__buttonLabel js__profile-trigger"
                           value="Añadir imagen"
-=======
-                        <input
-                          className="fill-in__button fill-in__buttonLabel js__profile-trigger"
-                          id="img-profile"
-                          type="button"
-                          value="Añadir imagen"
-                          name="img-profile"
->>>>>>> f4c438b620a8155d2a174c82024802819c28e6f7
                         />
                         <input
                           name="photo"
@@ -303,26 +260,12 @@ class App extends React.Component {
                   </div>
                 </fieldset>
                 <fieldset className="form__share">
-<<<<<<< HEAD
                   <legend className="legend closed">
                     <i className="fas fa-share-alt legend__icon legend__icon--share" />
 
                     <h2 className="legend__title">Comparte</h2>
                     <i className="fas fa-chevron-up legend__arrow" />
                   </legend>
-=======
-                  {/* <legend className="legend closed">
-                    <i className="fas fa-share-alt legend__icon legend__icon--share" />
-
-                    <h2 className="legend__title">Comparte</h2>
-                    <i className="fas fa-chevron-up legend__arrow" />
-                  </legend> */}
-                  <Collapsibles 
-                  title="Comparte"
-                  icon="fas fa-share-alt legend__icon legend__icon--share"
-                  />
-
->>>>>>> f4c438b620a8155d2a174c82024802819c28e6f7
                   <div className="share__container hidden collapsibles">
                     <button className="share-button" type="button">
                       <i className="far fa-address-card" /> Crear tarjeta
