@@ -13,7 +13,7 @@ class AddImageButton extends React.Component {
         className = {className}
         id="img-profile"
         type="button"
-        value={value }
+        value={value}
         name="img-profile"
       />
     );
