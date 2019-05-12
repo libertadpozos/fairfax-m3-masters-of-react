@@ -13,13 +13,3 @@ class Collapsibles extends React.Component {
 }
 
 export default Collapsibles;
-
-// PLAN ****
-{
-  /* cambiar class del primer icono  */
-}
-
-{
-  /* cambiar inner de h2 */
-}
-// El contenido será un prop
