@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import logo from './logo.svg';
 import './scss/main.scss';
 import Collapsibles from './components/Collapsibles';
 
-class App extends Component {
+class App extends React.Component {
   render() {
     return (
       <div className="App">
