@@ -1,7 +1,8 @@
 import React from 'react';
+import RadioButtonsList from './components/RadioButtonsList';
+import Collapsibles from './components/Collapsibles';
 import logo from './logo.svg';
 import './scss/main.scss';
-import Collapsibles from './components/Collapsibles';
 
 class App extends React.Component {
   render() {
@@ -105,65 +106,10 @@ class App extends React.Component {
                   
                   />
 
-                  <label
-                    className="option__distribution hidden collapsibles"
-                    for="colors"
-                  >
+                  {/* <label className="option__distribution hidden collapsibles" for="colors"> */}
+                  <label className="option__distribution collapsibles" for="colors">
                     <p className="option__title legend__subtitle">Colores</p>
-                    <div className="option__container">
-                      <label className="color__container">
-                        <div className="color-item radio__container">
-                          <input
-                            className="radio input-update"
-                            type="radio"
-                            id="colors"
-                            name="palette"
-                            value="1"
-                            checked
-                          />
-                          <span className="checkmark" id="p1" />
-                        </div>
-                        <div className="palette--1">
-                          <div className="color-item bg__dark" />
-                          <div className="color-item bg__medium" />
-                          <div className="color-item bg__light" />
-                        </div>
-                      </label>
-                      <label className="color__container">
-                        <div className="color-item radio__container">
-                          <input
-                            className="radio input-update"
-                            type="radio"
-                            id="colors"
-                            name="palette"
-                            value="2"
-                          />
-                          <span className="checkmark" id="p2" />
-                        </div>
-                        <div className="palette--2">
-                          <div className="color-item bg__dark" />
-                          <div className="color-item bg__medium" />
-                          <div className="color-item bg__light" />
-                        </div>
-                      </label>
-                      <label className="color__container">
-                        <div className="color-item radio__container">
-                          <input
-                            className="radio input-update"
-                            type="radio"
-                            id="colors"
-                            name="palette"
-                            value="3"
-                          />
-                          <span className="checkmark" id="p3" />
-                        </div>
-                        <div className="palette--3">
-                          <div className="color-item bg__dark" />
-                          <div className="color-item bg__medium" />
-                          <div className="color-item bg__light" />
-                        </div>
-                      </label>
-                    </div>
+                    <RadioButtonsList />  
                   </label>
                 </fieldset>
                 <fieldset className="form__fill-in">
