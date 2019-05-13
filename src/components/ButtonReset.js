@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class ButtonReset extends React.Component {
     render() {
         return(
             <div className="reset-button">
-                <label for="reset" className="visually-hidden">Botón de borrar</label>
+                <label for="reset" className="visually-hidden">{this.props.accessibilityText}</label>
                 <button className="reset--button" type="button" id="reset">
                     <i className={this.props.icon} />
                     {this.props.children}
@@ -12,6 +13,11 @@ class ButtonReset extends React.Component {
             </div>
         );
     }
+}
+
+ButtonReset.propTypes = {
+    accessibilityText: PropTypes.string.isRequired,
+    icon: PropTypes.string.isRequired,
 }
 
 export default ButtonReset;

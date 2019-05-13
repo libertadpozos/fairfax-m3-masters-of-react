@@ -27,7 +27,7 @@ class App extends React.Component {
               <fieldset className="form__preview">
                 <section className="preview-container">
                   <div className="button-container">
-                    <ButtonReset icon="far fa-trash-alt">Reset</ButtonReset>
+                    <ButtonReset accessibilityText="Botón de borrar" icon="far fa-trash-alt">Reset</ButtonReset>
                     <div className='card-preview palette--1'>
                       <div className='card--header'>
                         <div className='sidebar bg__light' />
