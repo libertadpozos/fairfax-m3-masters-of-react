@@ -1,4 +1,7 @@
 import React from 'react';
+<<<<<<< HEAD
+import AddImageButton from './components/AddImageButton';
+=======
 import RadioButtonsList from './components/RadioButtonsList';
 import SocialMediaList from './components/SocialMediaList';
 import Collapsibles from './components/Collapsibles';
@@ -7,6 +10,7 @@ import logoTeam from './images/octomeow.png';
 import logoCard from './images/tarjetas-molonas.svg';
 import FillInItem from './components/FillInItem';
 import './scss/main.scss';
+>>>>>>> dev
 
 class App extends React.Component {
   render() {
@@ -56,14 +60,61 @@ class App extends React.Component {
                       </div>
                       {/* <div
                      className='user--profile__pic js__profile-image profile__image' style='background-image:url(assets/images/default-profile-pic.png)'></div> */}
+<<<<<<< HEAD
+                      <div className="user--profile__pic js__profile-image profile__image" />
+
+                      <div className="contact__link">
+                        <ul className="contact__list">
+                          <li className="contact__list--rrss pad--mobile border__medium">
+                            <a
+                              href="/"
+                              className="icon__link--mobile txt__dark"
+                              title=""
+                              id="linkMobile"
+                            >
+                              <i className="contact__list--icon fas fa-mobile-alt" />
+                            </a>
+                          </li>
+                          <li className="contact__list--rrss border__medium">
+                            <a className="email txt__dark" href="/">
+                              <i className="contact__list--icon far fa-envelope" />
+                            </a>
+                          </li>
+                          <li className="contact__list--rrss border__medium">
+                            <a
+                              href="/"
+                              id="linkEdin"
+                              className="link__linkedin txt__dark"
+                            >
+                              <i className="contact__list--icon fab fa-linkedin-in" />
+                            </a>
+                          </li>
+                          <li className="contact__list--rrss border__medium">
+                            <a href="/" id="linkGithub" className="txt__dark">
+                              <i className="contact__list--icon fab fa-github-alt" />
+                            </a>
+                          </li>
+                        </ul>
+=======
                       <div className='user--profile__pic js__profile-image profile__image' />
                       <div className='contact__link'>
                         <SocialMediaList />
+>>>>>>> dev
                       </div>
                     </div>
                   </div>
                 </section>
               </fieldset>
+<<<<<<< HEAD
+              <div className="form__content">
+                <fieldset className="form__design">
+                  <legend className="legend closed">
+                    <i className="far fa-object-ungroup fa-lg legend__icon" />
+
+                    <h2 className="legend__title">Diseña</h2>
+                    <i className="fas fa-chevron-up legend__arrow" />
+                  </legend>
+=======
               <div className='form__content'>
                 <fieldset className='form__design'>
                   <Collapsibles
@@ -72,6 +123,7 @@ class App extends React.Component {
                   />
 
                   {/* <label className="option__distribution hidden collapsibles" for="colors"> */}
+>>>>>>> dev
                   <label
                     className='option__distribution collapsibles'
                     for='colors'
@@ -80,6 +132,49 @@ class App extends React.Component {
                     <RadioButtonsList />
                   </label>
                 </fieldset>
+<<<<<<< HEAD
+                <fieldset className="form__fill-in">
+                  <legend className="legend closed">
+                    <i className="far fa-keyboard legend__icon" />
+
+                    <h2 className="legend__title">Rellena</h2>
+                    <i className="fas fas fa-chevron-up legend__arrow" />
+                  </legend>
+                  <div className="fill-in__items hidden collapsibles">
+                    <div className="fill-in__item">
+                      <label className="fill-in__label" for="full_name">
+                        Nombre completo
+                      </label>
+                      <input
+                        className="fill-in__input input-update"
+                        id="full_name"
+                        type="text"
+                        name="name"
+                        placeholder="Sally Jill"
+                        required
+                      />
+                    </div>
+                    <div className="fill-in__item">
+                      <label className="fill-in__label" for="job">
+                        Puesto
+                      </label>
+                      <input
+                        className="fill-in__input input-update"
+                        id="job"
+                        type="text"
+                        name="job"
+                        placeholder="Front-end"
+                      />
+                    </div>
+                    <div className="fill-in__item">
+                      <label className="fill-in__label" for="img-profile">
+                        Imagen de perfil
+                      </label>
+                      <div className="fill-in__buttonImg-wrapper">
+                        <AddImageButton
+                          className="fill-in__button fill-in__buttonLabel js__profile-trigger"
+                          value="Añadir imagen"
+=======
                 <fieldset className='form__fill-in'>
                   <Collapsibles
                     title='Rellena'
@@ -114,6 +209,7 @@ class App extends React.Component {
                           type='button'
                           value='Añadir imagen'
                           name='img-profile'
+>>>>>>> dev
                         />
                         <input
                           name='photo'
@@ -157,6 +253,18 @@ class App extends React.Component {
                     />
                   </div>
                 </fieldset>
+<<<<<<< HEAD
+                <fieldset className="form__share">
+                  <legend className="legend closed">
+                    <i className="fas fa-share-alt legend__icon legend__icon--share" />
+
+                    <h2 className="legend__title">Comparte</h2>
+                    <i className="fas fa-chevron-up legend__arrow" />
+                  </legend>
+                  <div className="share__container hidden collapsibles">
+                    <button className="share-button" type="button">
+                      <i className="far fa-address-card" /> Crear tarjeta
+=======
                 <fieldset className='form__share'>
                   <Collapsibles
                     title='Comparte'
@@ -166,6 +274,7 @@ class App extends React.Component {
                   <div className='share__container hidden collapsibles'>
                     <button className='share-button' type='button'>
                       <i className='far fa-address-card' /> Crear tarjeta
+>>>>>>> dev
                     </button>
                     <section className='section__twitter collapsible__hidden'>
                       <h3 className='title-twitter'>
