@@ -2,6 +2,7 @@ import React from 'react';
 import RadioButtonsList from './components/RadioButtonsList';
 import SocialMediaList from './components/SocialMediaList';
 import Collapsibles from './components/Collapsibles';
+import Footer from './components/Footer';
 import logo from './logo.svg';
 import './scss/main.scss';
 
@@ -195,27 +196,9 @@ class App extends React.Component {
             </div>
           </form>
         </main>
-        <footer className="main-footer">
-          <div className="main-container">
-            <ul className="main-footer__list align-text">
-              <li className="main-footer__list-text">
-                Awesome profile-cards © 2019
-              </li>
-              <li className="main-footer__list-adalab">
-                <img src="assets/images/logo-adalab.png" alt="Imagen Adalab" />
-              </li>
-              <li className="main-footer__list-logo">
-                <a href="." title="Link to Home">
-                  <img
-                    className="main-footer__list-img"
-                    src="assets/images/octomeow.png"
-                    alt="Imagen Octomeow"
-                  />
-                </a>
-              </li>
-            </ul>
-          </div>
-        </footer>
+        <Footer 
+        footerText="Awesome profile-cards © 2019"
+        />
       </div>
     );
   }
