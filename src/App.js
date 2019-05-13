@@ -1,11 +1,13 @@
 import React from 'react';
+import AddImageButton from './components/AddImageButton';
+import CardHeader from './components/CardHeader';
+import Collapsibles from './components/Collapsibles';
+import FillInItem from './components/FillInItem';
 import RadioButtonsList from './components/RadioButtonsList';
 import SocialMediaList from './components/SocialMediaList';
-import Collapsibles from './components/Collapsibles';
 import logoAdalab from './images/logo-adalab.png';
 import logoTeam from './images/octomeow.png';
 import logoCard from './images/tarjetas-molonas.svg';
-import FillInItem from './components/FillInItem';
 import './scss/main.scss';
 
 class App extends React.Component {
@@ -44,20 +46,15 @@ class App extends React.Component {
                       </button>
                     </div>
 
-                    <div className="card-preview palette--1">
-                      <div className="card--header">
-                        <div className="sidebar bg__light" />
-                        <div className="main--data">
-                          <p className="full-name txt__dark">
-                            Nombre de prueba
-                          </p>
-                          <p className="occupation txt__medium" />
-                        </div>
-                      </div>
+                    <div className='card-preview palette--1'>
+                      <CardHeader 
+                        defaultName='Nombre de prueba' 
+                        defaultJob='Front-end developer'
+                      />
                       {/* <div
                      className='user--profile__pic js__profile-image profile__image' style='background-image:url(assets/images/default-profile-pic.png)'></div> */}
-                      <div className="user--profile__pic js__profile-image profile__image" />
-                      <div className="contact__link">
+                      <div className='user--profile__pic js__profile-image profile__image' />
+                      <div className='contact__link'>
                         <SocialMediaList />
                       </div>
                     </div>
