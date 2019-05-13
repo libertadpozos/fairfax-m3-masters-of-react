@@ -1,5 +1,6 @@
 import React from 'react';
 import RadioButtonsList from './components/RadioButtonsList';
+import SocialMediaList from './components/SocialMediaList';
 import Collapsibles from './components/Collapsibles';
 import logo from './logo.svg';
 import './scss/main.scss';
@@ -40,70 +41,29 @@ class App extends React.Component {
                       </button>
                     </div>
 
-                    <div className="card-preview palette--1">
-                      <div className="card--header">
-                        <div className="sidebar bg__light" />
-                        <div className="main--data">
-                          <p className="full-name txt__dark">
-                            Nombre de prueba
-                          </p>
-                          <p className="occupation txt__medium" />
+                    <div className='card-preview palette--1'>
+                      <div className='card--header'>
+                        <div className='sidebar bg__light' />
+                          <div className='main--data'>
+                            <p className='full-name txt__dark'>Nombre de prueba</p>
+                            <p className='occupation txt__medium' />
+                          </div>
+                        </div>
+                      {/* <div
+                     className='user--profile__pic js__profile-image profile__image' style='background-image:url(assets/images/default-profile-pic.png)'></div> */}
+                      <div className='user--profile__pic js__profile-image profile__image' />
+                        <div className='contact__link'>
+                          <SocialMediaList />
                         </div>
                       </div>
-                      <div
-                        className="user--profile__pic js__profile-image profile__image"
-                        //  style='backgroundImage:url(assets/images/default-profile-pic.png)'
-                      />
-
-                      <div className="contact__link">
-                        <ul className="contact__list">
-                          <li className="contact__list--rrss pad--mobile border__medium">
-                            <a
-                              href="/"
-                              className="icon__link--mobile txt__dark"
-                              title=""
-                              id="linkMobile"
-                            >
-                              <i className="contact__list--icon fas fa-mobile-alt" />
-                            </a>
-                          </li>
-                          <li className="contact__list--rrss border__medium">
-                            <a className="email txt__dark" href="/">
-                              <i className="contact__list--icon far fa-envelope" />
-                            </a>
-                          </li>
-                          <li className="contact__list--rrss border__medium">
-                            <a
-                              href="/"
-                              id="linkEdin"
-                              className="link__linkedin txt__dark"
-                            >
-                              <i className="contact__list--icon fab fa-linkedin-in" />
-                            </a>
-                          </li>
-                          <li className="contact__list--rrss border__medium">
-                            <a href="/" id="linkGithub" className="txt__dark">
-                              <i className="contact__list--icon fab fa-github-alt" />
-                            </a>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
                   </div>
                 </section>
               </fieldset>
               <div className="form__content">
                 <fieldset className="form__design">
-                  {/* <legend className='legend closed'>
-                    <i className='far fa-object-ungroup fa-lg legend__icon' />
-
-                 <h2 className='legend__title'>Diseña</h2>
-                 <i className='fas fa-chevron-up legend__arrow' />
-               </legend> */}
                   <Collapsibles 
-                  title="Diseña" 
-                  icon = "far fa-object-ungroup fa-lg legend__icon"
-                  
+                    title="Diseña" 
+                    icon = "far fa-object-ungroup fa-lg legend__icon"
                   />
 
                   {/* <label className="option__distribution hidden collapsibles" for="colors"> */}
@@ -113,15 +73,10 @@ class App extends React.Component {
                   </label>
                 </fieldset>
                 <fieldset className="form__fill-in">
-                  {/* <legend className="legend closed">
-                    <i className="far fa-keyboard legend__icon" />
-
-                    <h2 className="legend__title">Rellena</h2>
-                    <i className="fas fas fa-chevron-up legend__arrow" />
-                  </legend> */}
                   <Collapsibles 
-                  title="Rellena"
-                  icon= "far fa-keyboard legend__icon" />
+                    title="Rellena"
+                    icon= "far fa-keyboard legend__icon" 
+                  />
 
                   <div className="fill-in__items hidden collapsibles">
                     <div className="fill-in__item">
@@ -196,9 +151,7 @@ class App extends React.Component {
                       />
                     </div>
                     <div className="fill-in__item">
-                      <label className="fill-in__label" for="linkedin">
-                        Linkedin
-                      </label>
+                      <label className="fill-in__label" for="linkedin">Linkedin</label>
                       <input
                         className="fill-in__input input-update"
                         id="linkedin"
@@ -208,29 +161,15 @@ class App extends React.Component {
                       />
                     </div>
                     <div className="fill-in__item">
-                      <label className="fill-in__label" for="github">
-                        Github
-                      </label>
-                      <input
-                        className="fill-in__input input-update"
-                        id="github"
-                        type="text"
-                        name="github"
-                        placeholder="sally-hill"
-                      />
+                      <label className="fill-in__label" for="github">Github</label>
+                      <input className="fill-in__input input-update" id="github" type="text" name="github" placeholder="sally-hill" />
                     </div>
                   </div>
                 </fieldset>
                 <fieldset className="form__share">
-                  {/* <legend className="legend closed">
-                    <i className="fas fa-share-alt legend__icon legend__icon--share" />
-
-                    <h2 className="legend__title">Comparte</h2>
-                    <i className="fas fa-chevron-up legend__arrow" />
-                  </legend> */}
                   <Collapsibles 
-                  title="Comparte"
-                  icon="fas fa-share-alt legend__icon legend__icon--share"
+                    title="Comparte"
+                    icon="fas fa-share-alt legend__icon legend__icon--share"
                   />
 
                   <div className="share__container hidden collapsibles">
