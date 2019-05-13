@@ -83,7 +83,9 @@ class App extends React.Component {
                     icon="far fa-keyboard legend__icon"
                   />
 
-                  <div className="fill-in__items hidden collapsibles">
+                  {/* <div className="fill-in__items hidden collapsibles"> */}
+                  <div className="fill-in__items collapsibles">
+
                     <FillInItem
                       forId="full_name"
                       labelName="Nombre completo"
@@ -161,6 +163,7 @@ class App extends React.Component {
                   />
 
                   <div className="share__container hidden collapsibles">
+                  
                     <button className="share-button" type="button">
                       <i className="far fa-address-card" /> Crear tarjeta
                     </button>
