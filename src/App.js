@@ -2,7 +2,7 @@ import React from 'react';
 import RadioButtonsList from './components/RadioButtonsList';
 import SocialMediaList from './components/SocialMediaList';
 import Collapsibles from './components/Collapsibles';
-import logo from './logo.svg';
+import ButtonReset from './components/ButtonReset';
 import './scss/main.scss';
 
 class App extends React.Component {
@@ -27,20 +27,7 @@ class App extends React.Component {
               <fieldset className="form__preview">
                 <section className="preview-container">
                   <div className="button-container">
-                    <div className="reset-button">
-                      <label for="reset" className="visually-hidden">
-                        Botón de borrar
-                      </label>
-                      <button
-                        className="reset--button"
-                        type="button"
-                        id="reset"
-                      >
-                        <i className="far fa-trash-alt" />
-                        Reset
-                      </button>
-                    </div>
-
+                    <ButtonReset icon="far fa-trash-alt">Reset</ButtonReset>
                     <div className='card-preview palette--1'>
                       <div className='card--header'>
                         <div className='sidebar bg__light' />
