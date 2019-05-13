@@ -1,4 +1,5 @@
 import React from 'react';
+import AddImageButton from './components/AddImageButton';
 import RadioButtonsList from './components/RadioButtonsList';
 import SocialMediaList from './components/SocialMediaList';
 import Collapsibles from './components/Collapsibles';
