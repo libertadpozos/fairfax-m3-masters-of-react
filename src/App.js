@@ -1,14 +1,12 @@
 import React from 'react';
 import AddImageButton from './components/AddImageButton';
-import CardHeader from './components/CardHeader';
 import FillInItem from './components/FillInItem';
 import RadioButtonsList from './components/RadioButtonsList';
 import Collapsibles from './components/Collapsibles';
-import SocialMediaList from './components/SocialMediaList';
-import ButtonReset from './components/ButtonReset';
 import logoAdalab from './images/logo-adalab.png';
 import logoTeam from './images/octomeow.png';
 import logoCard from './images/tarjetas-molonas.svg';
+import PreviewCard from './components/PreviewCard';
 import './scss/main.scss';
 
 class App extends React.Component {
@@ -31,23 +29,7 @@ class App extends React.Component {
           <form className="form" action="" method="POST">
             <div className="wrapper">
               <fieldset className="form__preview">
-                <section className="preview-container">
-                  <div className="button-container">
-                    <ButtonReset accessibilityText="Botón de borrar" icon="far fa-trash-alt">Reset</ButtonReset>
-                    <div className='card-preview palette--1'>
-                      <CardHeader 
-                        defaultName='Nombre de prueba' 
-                        defaultJob='Front-end developer'
-                      />
-                      {/* <div
-                     className='user--profile__pic js__profile-image profile__image' style='background-image:url(assets/images/default-profile-pic.png)'></div> */}
-                      <div className='user--profile__pic js__profile-image profile__image' />
-                      <div className='contact__link'>
-                        <SocialMediaList />
-                      </div>
-                    </div>
-                  </div>
-                </section>
+                <PreviewCard />
               </fieldset>
               <div className="form__content">
                 <fieldset className="form__design">
@@ -59,7 +41,7 @@ class App extends React.Component {
                   {/* <label className="option__distribution hidden collapsibles" for="colors"> */}
                   <label
                     className="option__distribution collapsibles"
-                    for="colors"
+                    htmlFor="colors"
                   >
                     <p className="option__title legend__subtitle">Colores</p>
                     <RadioButtonsList />
@@ -91,7 +73,7 @@ class App extends React.Component {
                     />
 
                     <div className="fill-in__item">
-                      <label className="fill-in__label" for="img-profile">
+                      <label className="fill-in__label" htmlFor="img-profile">
                         Imagen de perfil
                       </label>
                       <div className="fill-in__buttonImg-wrapper">
