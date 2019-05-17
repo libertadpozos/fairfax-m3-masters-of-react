@@ -1,8 +1,14 @@
 import React from 'react';
+import AddImageButton from './components/AddImageButton';
+import CardHeader from './components/CardHeader';
+import FillInItem from './components/FillInItem';
 import RadioButtonsList from './components/RadioButtonsList';
-import SocialMediaList from './components/SocialMediaList';
 import Collapsibles from './components/Collapsibles';
+import SocialMediaList from './components/SocialMediaList';
 import ButtonReset from './components/ButtonReset';
+import logoAdalab from './images/logo-adalab.png';
+import logoTeam from './images/octomeow.png';
+import logoCard from './images/tarjetas-molonas.svg';
 import './scss/main.scss';
 
 class App extends React.Component {
@@ -14,7 +20,7 @@ class App extends React.Component {
             <a href="index.html">
               <img
                 className="logo"
-                src="assets/images/tarjetas-molonas.svg"
+                src={logoCard}
                 alt="logo awesome profile cards"
               />
             </a>
@@ -29,68 +35,61 @@ class App extends React.Component {
                   <div className="button-container">
                     <ButtonReset accessibilityText="Botón de borrar" icon="far fa-trash-alt">Reset</ButtonReset>
                     <div className='card-preview palette--1'>
-                      <div className='card--header'>
-                        <div className='sidebar bg__light' />
-                          <div className='main--data'>
-                            <p className='full-name txt__dark'>Nombre de prueba</p>
-                            <p className='occupation txt__medium' />
-                          </div>
-                        </div>
+                      <CardHeader 
+                        defaultName='Nombre de prueba' 
+                        defaultJob='Front-end developer'
+                      />
                       {/* <div
                      className='user--profile__pic js__profile-image profile__image' style='background-image:url(assets/images/default-profile-pic.png)'></div> */}
                       <div className='user--profile__pic js__profile-image profile__image' />
-                        <div className='contact__link'>
-                          <SocialMediaList />
-                        </div>
+                      <div className='contact__link'>
+                        <SocialMediaList />
                       </div>
+                    </div>
                   </div>
                 </section>
               </fieldset>
               <div className="form__content">
                 <fieldset className="form__design">
-                  <Collapsibles 
-                    title="Diseña" 
-                    icon = "far fa-object-ungroup fa-lg legend__icon"
+                  <Collapsibles
+                    title="Diseña"
+                    icon="far fa-object-ungroup fa-lg legend__icon"
                   />
 
                   {/* <label className="option__distribution hidden collapsibles" for="colors"> */}
-                  <label className="option__distribution collapsibles" for="colors">
+                  <label
+                    className="option__distribution collapsibles"
+                    for="colors"
+                  >
                     <p className="option__title legend__subtitle">Colores</p>
-                    <RadioButtonsList />  
+                    <RadioButtonsList />
                   </label>
                 </fieldset>
                 <fieldset className="form__fill-in">
-                  <Collapsibles 
+                  <Collapsibles
                     title="Rellena"
-                    icon= "far fa-keyboard legend__icon" 
+                    icon="far fa-keyboard legend__icon"
                   />
 
-                  <div className="fill-in__items hidden collapsibles">
-                    <div className="fill-in__item">
-                      <label className="fill-in__label" for="full_name">
-                        Nombre completo
-                      </label>
-                      <input
-                        className="fill-in__input input-update"
-                        id="full_name"
-                        type="text"
-                        name="name"
-                        placeholder="Sally Jill"
-                        required
-                      />
-                    </div>
-                    <div className="fill-in__item">
-                      <label className="fill-in__label" for="job">
-                        Puesto
-                      </label>
-                      <input
-                        className="fill-in__input input-update"
-                        id="job"
-                        type="text"
-                        name="job"
-                        placeholder="Front-end"
-                      />
-                    </div>
+                  {/* <div className="fill-in__items hidden collapsibles"> */}
+                  <div className="fill-in__items collapsibles">
+
+                    <FillInItem
+                      forId="full_name"
+                      labelName="Nombre completo"
+                      type="text"
+                      name="name"
+                      place="Sally Jill"
+                    />
+
+                    <FillInItem
+                      forId="job"
+                      labelName="Puesto"
+                      type="text"
+                      name="job"
+                      place="Front-end"
+                    />
+
                     <div className="fill-in__item">
                       <label className="fill-in__label" for="img-profile">
                         Imagen de perfil
@@ -112,54 +111,47 @@ class App extends React.Component {
                         <div className="img-profile__preview js__profile-preview profile__preview" />
                       </div>
                     </div>
-                    <div className="fill-in__item">
-                      <label className="fill-in__label" for="phone">
-                        Teléfono
-                      </label>
-                      <input
-                        className="fill-in__input input__tel input-update"
-                        id="phone"
-                        type="tel"
-                        minlength="9"
-                        name="phone"
-                        placeholder="612345698"
-                      />
-                    </div>
-                    <div className="fill-in__item">
-                      <label className="fill-in__label" for="email">
-                        Email
-                      </label>
-                      <input
-                        className="fill-in__input input-update"
-                        id="email"
-                        type="email"
-                        name="email"
-                        placeholder="sally-jill@gmail.com"
-                      />
-                    </div>
-                    <div className="fill-in__item">
-                      <label className="fill-in__label" for="linkedin">Linkedin</label>
-                      <input
-                        className="fill-in__input input-update"
-                        id="linkedin"
-                        type="text"
-                        name="linkedin"
-                        placeholder="sallyhill"
-                      />
-                    </div>
-                    <div className="fill-in__item">
-                      <label className="fill-in__label" for="github">Github</label>
-                      <input className="fill-in__input input-update" id="github" type="text" name="github" placeholder="sally-hill" />
-                    </div>
+                    <FillInItem
+                      forId="phone"
+                      labelName="Teléfono"
+                      type="tel"
+                      name="phone"
+                      place="612345698"
+                    />
+
+                    <FillInItem
+                      forId="email"
+                      labelName="Email"
+                      type="email"
+                      name="email"
+                      place="sally-jill@gmail.com"
+                    />
+
+                    <FillInItem
+                      forId="linkedin"
+                      labelName="Linkedin"
+                      type="text"
+                      name="linkedin"
+                      place="sallyhill"
+                    />
+
+                    <FillInItem
+                      forId="github"
+                      labelName="Github"
+                      type="text"
+                      name="github"
+                      place="sally-hill"
+                    />
                   </div>
                 </fieldset>
                 <fieldset className="form__share">
-                  <Collapsibles 
+                  <Collapsibles
                     title="Comparte"
                     icon="fas fa-share-alt legend__icon legend__icon--share"
                   />
 
                   <div className="share__container hidden collapsibles">
+                  
                     <button className="share-button" type="button">
                       <i className="far fa-address-card" /> Crear tarjeta
                     </button>
@@ -189,13 +181,13 @@ class App extends React.Component {
                 Awesome profile-cards © 2019
               </li>
               <li className="main-footer__list-adalab">
-                <img src="assets/images/logo-adalab.png" alt="Imagen Adalab" />
+                <img src={logoAdalab} alt="Imagen Adalab" />
               </li>
               <li className="main-footer__list-logo">
                 <a href="." title="Link to Home">
                   <img
                     className="main-footer__list-img"
-                    src="assets/images/octomeow.png"
+                    src={logoTeam}
                     alt="Imagen Octomeow"
                   />
                 </a>
