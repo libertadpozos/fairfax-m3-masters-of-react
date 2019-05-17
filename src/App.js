@@ -10,6 +10,28 @@ import PreviewCard from './components/PreviewCard';
 import './scss/main.scss';
 
 class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      isOpen: 1,
+      data : {
+        palette : 1,
+      }
+    }
+    this.handleRadioClick = this.handleRadioClick.bind(this);
+  }
+
+  handleRadioClick(event){
+    const target = parseInt(event.currentTarget.value)
+    this.setState({
+      ...this.state,
+      data: {
+        palette: target,
+      }
+    });
+
+  }
+
   render() {
     return (
       <div className="App">
@@ -44,7 +66,7 @@ class App extends React.Component {
                     htmlFor="colors"
                   >
                     <p className="option__title legend__subtitle">Colores</p>
-                    <RadioButtonsList />
+                    <RadioButtonsList handlerRadio={this.handleRadioClick} selectedPalette={this.state.data.palette}/>
                   </label>
                 </fieldset>
                 <fieldset className="form__fill-in">
