@@ -1,10 +1,8 @@
 import React from 'react';
 import AddImageButton from './components/AddImageButton';
-import CardHeader from './components/CardHeader';
-import Collapsibles from './components/Collapsibles';
 import FillInItem from './components/FillInItem';
 import RadioButtonsList from './components/RadioButtonsList';
-import SocialMediaList from './components/SocialMediaList';
+import Collapsibles from './components/Collapsibles';
 import logoAdalab from './images/logo-adalab.png';
 import logoTeam from './images/octomeow.png';
 import logoCard from './images/tarjetas-molonas.svg';
@@ -31,9 +29,7 @@ class App extends React.Component {
           <form className="form" action="" method="POST">
             <div className="wrapper">
               <fieldset className="form__preview">
-                <PreviewCard 
-                  textAccesibility='Botón de borrar'
-                />
+                <PreviewCard />
               </fieldset>
               <div className="form__content">
                 <fieldset className="form__design">
@@ -45,7 +41,7 @@ class App extends React.Component {
                   {/* <label className="option__distribution hidden collapsibles" for="colors"> */}
                   <label
                     className="option__distribution collapsibles"
-                    for="colors"
+                    htmlFor="colors"
                   >
                     <p className="option__title legend__subtitle">Colores</p>
                     <RadioButtonsList />
@@ -77,7 +73,7 @@ class App extends React.Component {
                     />
 
                     <div className="fill-in__item">
-                      <label className="fill-in__label" for="img-profile">
+                      <label className="fill-in__label" htmlFor="img-profile">
                         Imagen de perfil
                       </label>
                       <div className="fill-in__buttonImg-wrapper">
