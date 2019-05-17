@@ -20,8 +20,6 @@ class PreviewCard extends React.Component {
                             defaultName="Nombre de prueba"
                             defaultJob="Front-end developer"
                         />
-                        {/* <div
-                     className='user--profile__pic js__profile-image profile__image' style='background-image:url(assets/images/default-profile-pic.png)'></div> */}
                         <div className="user--profile__pic js__profile-image profile__image" />
                         <div className="contact__link">
                             <SocialMediaList />
