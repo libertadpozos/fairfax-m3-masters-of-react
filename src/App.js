@@ -1,10 +1,11 @@
 import React from 'react';
 import AddImageButton from './components/AddImageButton';
 import CardHeader from './components/CardHeader';
-import Collapsibles from './components/Collapsibles';
 import FillInItem from './components/FillInItem';
 import RadioButtonsList from './components/RadioButtonsList';
+import Collapsibles from './components/Collapsibles';
 import SocialMediaList from './components/SocialMediaList';
+import ButtonReset from './components/ButtonReset';
 import logoAdalab from './images/logo-adalab.png';
 import logoTeam from './images/octomeow.png';
 import logoCard from './images/tarjetas-molonas.svg';
@@ -32,20 +33,7 @@ class App extends React.Component {
               <fieldset className="form__preview">
                 <section className="preview-container">
                   <div className="button-container">
-                    <div className="reset-button">
-                      <label for="reset" className="visually-hidden">
-                        Botón de borrar
-                      </label>
-                      <button
-                        className="reset--button"
-                        type="button"
-                        id="reset"
-                      >
-                        <i className="far fa-trash-alt" />
-                        Reset
-                      </button>
-                    </div>
-
+                    <ButtonReset accessibilityText="Botón de borrar" icon="far fa-trash-alt">Reset</ButtonReset>
                     <div className='card-preview palette--1'>
                       <CardHeader 
                         defaultName='Nombre de prueba' 
