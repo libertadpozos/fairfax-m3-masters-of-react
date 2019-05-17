@@ -28,14 +28,14 @@ class Object extends React.Component {
     this.setState({
       [key]: event.target.value
     });
-    
+    console.log(this.state)
   }
 
   render() {
     const { name } = this.state.data;
     
     return <FillInItem 
-      name = {this.props.name}
+        name = {this.props.name}
         value = {name}
         onChange={this.handleInputChange}
      />;

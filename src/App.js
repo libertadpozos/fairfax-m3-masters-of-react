@@ -8,14 +8,42 @@ import SocialMediaList from './components/SocialMediaList';
 import logoAdalab from './images/logo-adalab.png';
 import logoTeam from './images/octomeow.png';
 import logoCard from './images/tarjetas-molonas.svg';
-import Object from './data/Object';
 import './scss/main.scss';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: {
+        palette: 1,
+        name: '',
+        job: '',
+        phone: '',
+        email: '',
+        linkedin: '',
+        github: '',
+        photo: '',
+      },
+      value: '',
+      collapsible: false
+    };
+    this.handleInputChange = this.handleInputChange.bind(this);
+    console.log(this.state.data.name);
+  }
+  handleInputChange(event) {
+    const key = event.target.name;
+    this.setState({
+      [key]: event.target.value
+    });
+    console.log(this.state)
+  }
+
+
   render() {
+    const { name } = this.state.data;
     return (
       <div className='App'>
-      <Object/>
+      {/* <Object/> */}
         <header className='header wrapper'>
           <section className='header--container main-container'>
             <a href='index.html'>
@@ -93,6 +121,9 @@ class App extends React.Component {
                       type='text'
                       name='name'
                       place='Sally Jill'
+                      //name = {this.props.name}
+                       value = {name}
+                      onChange={this.handleInputChange}
                     />
 
                     <FillInItem
