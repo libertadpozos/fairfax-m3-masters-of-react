@@ -4,7 +4,7 @@ class FillInItem extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      //data: {
+      data: {
         palette: 1,
         name: '',
         job: '',
@@ -13,7 +13,7 @@ class FillInItem extends React.Component {
         linkedin: '',
         github: '',
         photo: '',
-      //},
+      },
       collapsible: false
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -29,7 +29,7 @@ class FillInItem extends React.Component {
   }
 
   render() {
-    const { name } = this.state;
+    // const { name } = this.state;
    // console.log(this.state.data.name)
     return (
       <div className='fill-in__item'>
@@ -42,7 +42,7 @@ class FillInItem extends React.Component {
           type={this.props.type}
           name={this.props.name}
           placeholder={this.props.place}
-          value={name}
+          value={this.key}
           onChange={this.handleInputChange}
         />
       </div>

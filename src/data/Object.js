@@ -1,6 +1,5 @@
 import React from 'react';
 import FillInItem from '../components/FillInItem';
-//import imgDefautl from '../images/default-profile-pic.png';
 
 class Object extends React.Component {
   constructor(props) {

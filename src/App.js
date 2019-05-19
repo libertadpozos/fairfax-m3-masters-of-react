@@ -8,14 +8,12 @@ import SocialMediaList from './components/SocialMediaList';
 import logoAdalab from './images/logo-adalab.png';
 import logoTeam from './images/octomeow.png';
 import logoCard from './images/tarjetas-molonas.svg';
-import Object from './data/Object';
 import './scss/main.scss';
 
 class App extends React.Component {
   render() {
     return (
       <div className='App'>
-      <Object/>
         <header className='header wrapper'>
           <section className='header--container main-container'>
             <a href='index.html'>
