@@ -29,8 +29,6 @@ class FillInItem extends React.Component {
   }
 
   render() {
-    // const { name } = this.state;
-   // console.log(this.state.data.name)
     return (
       <div className='fill-in__item'>
         <label className='fill-in__label' htmlFor={this.props.forId}>
@@ -42,7 +40,7 @@ class FillInItem extends React.Component {
           type={this.props.type}
           name={this.props.name}
           placeholder={this.props.place}
-          value={this.key}
+          value={this.state.key}
           onChange={this.handleInputChange}
         />
       </div>
