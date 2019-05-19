@@ -11,6 +11,32 @@ import logoCard from './images/tarjetas-molonas.svg';
 import './scss/main.scss';
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      // data: {
+        palette: 1,
+        name: '',
+        job: '',
+        phone: '',
+        email: '',
+        linkedin: '',
+        github: '',
+        photo: '',
+      // },
+      collapsible: false
+    };
+    this.handleInputChange = this.handleInputChange.bind(this);
+   // console.log(this.state.data.name);
+  }
+  handleInputChange(event) {
+    const key = event.target.name;
+    this.setState({
+      [key]: event.target.value
+    });
+    console.log(key)
+    console.log(event.target.value)
+  }
   render() {
     return (
       <div className='App'>
@@ -91,6 +117,8 @@ class App extends React.Component {
                       type='text'
                       name='name'
                       place='Sally Jill'
+                      value={this.state.name}
+                      onChange={this.handleInputChange}
                     />
 
                     <FillInItem
@@ -99,6 +127,8 @@ class App extends React.Component {
                       type='text'
                       name='job'
                       place='Front-end'
+                      value={this.state.job}
+                      onChange={this.handleInputChange}
                     />
 
                     <div className='fill-in__item'>
@@ -125,6 +155,8 @@ class App extends React.Component {
                       type='tel'
                       name='phone'
                       place='612345698'
+                      value={this.state.phone}
+                      onChange={this.handleInputChange}
                     />
 
                     <FillInItem
@@ -133,6 +165,8 @@ class App extends React.Component {
                       type='email'
                       name='email'
                       place='sally-jill@gmail.com'
+                      value={this.state.email}
+                      onChange={this.handleInputChange}
                     />
 
                     <FillInItem
@@ -141,6 +175,8 @@ class App extends React.Component {
                       type='text'
                       name='linkedin'
                       place='sallyhill'
+                      value={this.state.linkedin}
+                      onChange={this.handleInputChange}
                     />
 
                     <FillInItem
@@ -149,6 +185,8 @@ class App extends React.Component {
                       type='text'
                       name='github'
                       place='sally-hill'
+                      value={this.state.github}
+                      onChange={this.handleInputChange}
                     />
                   </div>
                 </fieldset>
