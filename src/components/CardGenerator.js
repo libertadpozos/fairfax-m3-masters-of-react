@@ -7,6 +7,7 @@ import logoAdalab from '../images/logo-adalab.png';
 import logoTeam from '../images/octomeow.png';
 import logoCard from '../images/tarjetas-molonas.svg';
 import PreviewCard from './PreviewCard';
+import { Link } from 'react-router-dom';
 import '../scss/main.scss';
 
 class CardGenerator extends React.Component {
@@ -21,9 +22,9 @@ class CardGenerator extends React.Component {
         email: '',
         linkedin: '',
         github: '',
-        photo: '',
+        photo: ''
       },
-      isOpen: 1,
+      isOpen: 1
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.openPanel = this.openPanel.bind(this);
@@ -38,16 +39,16 @@ class CardGenerator extends React.Component {
     });
   }
 
-  openPanel(e){
+  openPanel(e) {
     const target = parseInt(e.currentTarget.id);
     this.setState((prevState, props) => {
       let newOpen;
-      prevState.isOpen === target ? newOpen = 4 : newOpen = target;
+      prevState.isOpen === target ? (newOpen = 4) : (newOpen = target);
       return {
-        isOpen: newOpen,
+        isOpen: newOpen
       };
-    });    
-}
+    });
+  }
 
   render() {
     const { isOpen } = this.state;
@@ -55,51 +56,58 @@ class CardGenerator extends React.Component {
       <div className='App'>
         <header className='header wrapper'>
           <section className='header--container main-container'>
-            <a href='index.html'>
+            <Link to='/'>
               <img
                 className='logo'
                 src={logoCard}
                 alt='logo awesome profile cards'
               />
-            </a>
+            </Link>
           </section>
         </header>
 
-        <main className="cards__container">
-          <form className="form" action="" method="POST">
-            <div className="wrapper">
-              <fieldset className="form__preview">
+        <main className='cards__container'>
+          <form className='form' action='' method='POST'>
+            <div className='wrapper'>
+              <fieldset className='form__preview'>
                 <PreviewCard />
               </fieldset>
               <div className='form__content'>
                 <fieldset className='form__design'>
                   <Collapsibles
-                    title="Diseña"
-                    icon="far fa-object-ungroup fa-lg legend__icon"
+                    title='Diseña'
+                    icon='far fa-object-ungroup fa-lg legend__icon'
                     openPanel={this.openPanel}
                     id={1}
                     arrow={isOpen === 1 ? 'up' : 'down'}
                   />
 
                   <div
-                    className={`option__distribution ${isOpen === 1 ? '' : 'hidden'} collapsibles`}
-                    htmlFor="colors"
+                    className={`option__distribution ${
+                      isOpen === 1 ? '' : 'hidden'
+                    } collapsibles`}
+                    htmlFor='colors'
                   >
-                    <label className="option__title legend__subtitle">Colores</label>
+                    <label className='option__title legend__subtitle'>
+                      Colores
+                    </label>
                     <RadioButtonsList />
                   </div>
                 </fieldset>
                 <fieldset className='form__fill-in'>
                   <Collapsibles
-                    title="Rellena"
-                    icon="far fa-keyboard legend__icon"
+                    title='Rellena'
+                    icon='far fa-keyboard legend__icon'
                     openPanel={this.openPanel}
                     id={2}
                     arrow={isOpen === 2 ? 'up' : 'down'}
                   />
 
-                  <div className={`fill-in__items ${isOpen === 2 ? '' : 'hidden'} collapsibles`}>
-
+                  <div
+                    className={`fill-in__items ${
+                      isOpen === 2 ? '' : 'hidden'
+                    } collapsibles`}
+                  >
                     <FillInItem
                       forId='full_name'
                       labelName='Nombre completo'
@@ -120,8 +128,8 @@ class CardGenerator extends React.Component {
                       onChange={this.handleInputChange}
                     />
 
-                    <div className="fill-in__item">
-                      <label className="fill-in__label" htmlFor="img-profile">
+                    <div className='fill-in__item'>
+                      <label className='fill-in__label' htmlFor='img-profile'>
                         Imagen de perfil
                       </label>
                       <div className='fill-in__buttonImg-wrapper'>
@@ -181,16 +189,19 @@ class CardGenerator extends React.Component {
                 </fieldset>
                 <fieldset className='form__share'>
                   <Collapsibles
-                    title="Comparte"
-                    icon="fas fa-share-alt legend__icon legend__icon--share"
+                    title='Comparte'
+                    icon='fas fa-share-alt legend__icon legend__icon--share'
                     openPanel={this.openPanel}
                     id={3}
                     arrow={isOpen === 3 ? 'up' : 'down'}
                   />
-                  <div className={`share__container ${isOpen === 3 ? '' : 'hidden'} collapsibles`}>
-                  
-                    <button className="share-button" type="button">
-                      <i className="far fa-address-card" /> Crear tarjeta
+                  <div
+                    className={`share__container ${
+                      isOpen === 3 ? '' : 'hidden'
+                    } collapsibles`}
+                  >
+                    <button className='share-button' type='button'>
+                      <i className='far fa-address-card' /> Crear tarjeta
                     </button>
                     <section className='section__twitter collapsible__hidden'>
                       <h3 className='title-twitter'>
