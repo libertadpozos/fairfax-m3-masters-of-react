@@ -1,11 +1,12 @@
 import React from 'react';
+import AddImageButton from './components/AddImageButton';
+import FillInItem from './components/FillInItem';
 import RadioButtonsList from './components/RadioButtonsList';
-import SocialMediaList from './components/SocialMediaList';
 import Collapsibles from './components/Collapsibles';
 import logoAdalab from './images/logo-adalab.png';
 import logoTeam from './images/octomeow.png';
 import logoCard from './images/tarjetas-molonas.svg';
-import FillInItem from './components/FillInItem';
+import PreviewCard from './components/PreviewCard';
 import './scss/main.scss';
 
 class App extends React.Component {
@@ -26,10 +27,8 @@ class App extends React.Component {
       return {
         isOpen: newOpen,
       };
-      
     });    
 }
-
 
   render() {
     const { isOpen } = this.state;
@@ -51,41 +50,7 @@ class App extends React.Component {
           <form className="form" action="" method="POST">
             <div className="wrapper">
               <fieldset className="form__preview">
-                <section className="preview-container">
-                  <div className="button-container">
-                    <div className="reset-button">
-                      <label htmlFor="reset" className="visually-hidden">
-                        Botón de borrar
-                      </label>
-                      <button
-                        className="reset--button"
-                        type="button"
-                        id="reset"
-                      >
-                        <i className="far fa-trash-alt" />
-                        Reset
-                      </button>
-                    </div>
-
-                    <div className="card-preview palette--1">
-                      <div className="card--header">
-                        <div className="sidebar bg__light" />
-                        <div className="main--data">
-                          <p className="full-name txt__dark">
-                            Nombre de prueba
-                          </p>
-                          <p className="occupation txt__medium" />
-                        </div>
-                      </div>
-                      {/* <div
-                     className='user--profile__pic js__profile-image profile__image' style='background-image:url(assets/images/default-profile-pic.png)'></div> */}
-                      <div className="user--profile__pic js__profile-image profile__image" />
-                      <div className="contact__link">
-                        <SocialMediaList />
-                      </div>
-                    </div>
-                  </div>
-                </section>
+                <PreviewCard />
               </fieldset>
               <div className="form__content">
                 <fieldset className="form__design">
