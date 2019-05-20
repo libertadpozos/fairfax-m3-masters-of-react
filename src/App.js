@@ -1,13 +1,12 @@
 import React from 'react';
 import AddImageButton from './components/AddImageButton';
-import CardHeader from './components/CardHeader';
-import Collapsibles from './components/Collapsibles';
 import FillInItem from './components/FillInItem';
 import RadioButtonsList from './components/RadioButtonsList';
-import SocialMediaList from './components/SocialMediaList';
+import Collapsibles from './components/Collapsibles';
 import logoAdalab from './images/logo-adalab.png';
 import logoTeam from './images/octomeow.png';
 import logoCard from './images/tarjetas-molonas.svg';
+import PreviewCard from './components/PreviewCard';
 import './scss/main.scss';
 
 class App extends React.Component {
@@ -24,10 +23,10 @@ class App extends React.Component {
         github: '',
         photo: '',
       // },
-      collapsible: false
+      isOpen: 1,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
-   // console.log(this.state.data.name);
+    this.openPanel = this.openPanel.bind(this);
   }
   handleInputChange(event) {
     const key = event.target.name;
@@ -37,7 +36,20 @@ class App extends React.Component {
     console.log(key)
     console.log(event.target.value)
   }
+
+  openPanel(e){
+    const target = parseInt(e.currentTarget.id);
+    this.setState((prevState, props) => {
+      let newOpen;
+      prevState.isOpen === target ? newOpen = 4 : newOpen = target;
+      return {
+        isOpen: newOpen,
+      };
+    });    
+}
+
   render() {
+    const { isOpen } = this.state;
     return (
       <div className='App'>
         <header className='header wrapper'>
@@ -52,65 +64,41 @@ class App extends React.Component {
           </section>
         </header>
 
-        <main className='cards__container'>
-          <form className='form' action='' method='POST'>
-            <div className='wrapper'>
-              <fieldset className='form__preview'>
-                <section className='preview-container'>
-                  <div className='button-container'>
-                    <div className='reset-button'>
-                      <label htmlFor='reset' className='visually-hidden'>
-                        Botón de borrar
-                      </label>
-                      <button
-                        className='reset--button'
-                        type='button'
-                        id='reset'
-                      >
-                        <i className='far fa-trash-alt' />
-                        Reset
-                      </button>
-                    </div>
-
-                    <div className='card-preview palette--1'>
-                      <CardHeader
-                        defaultName='Nombre de prueba'
-                        defaultJob='Front-end developer'
-                      />
-                      {/* <div
-                     className='user--profile__pic js__profile-image profile__image' style='background-image:url(assets/images/default-profile-pic.png)'></div> */}
-                      <div className='user--profile__pic js__profile-image profile__image' />
-                      <div className='contact__link'>
-                        <SocialMediaList />
-                      </div>
-                    </div>
-                  </div>
-                </section>
+        <main className="cards__container">
+          <form className="form" action="" method="POST">
+            <div className="wrapper">
+              <fieldset className="form__preview">
+                <PreviewCard />
               </fieldset>
               <div className='form__content'>
                 <fieldset className='form__design'>
                   <Collapsibles
-                    title='Diseña'
-                    icon='far fa-object-ungroup fa-lg legend__icon'
+                    title="Diseña"
+                    icon="far fa-object-ungroup fa-lg legend__icon"
+                    openPanel={this.openPanel}
+                    id={1}
+                    arrow={isOpen === 1 ? 'up' : 'down'}
                   />
 
-                  {/* <label className="option__distribution hidden collapsibles" for="colors"> */}
-                  <label
-                    className='option__distribution collapsibles'
-                    htmlFor='colors'
+                  <div
+                    className={`option__distribution ${isOpen === 1 ? '' : 'hidden'} collapsibles`}
+                    htmlFor="colors"
                   >
-                    <p className='option__title legend__subtitle'>Colores</p>
+                    <label className="option__title legend__subtitle">Colores</label>
                     <RadioButtonsList />
-                  </label>
+                  </div>
                 </fieldset>
                 <fieldset className='form__fill-in'>
                   <Collapsibles
-                    title='Rellena'
-                    icon='far fa-keyboard legend__icon'
+                    title="Rellena"
+                    icon="far fa-keyboard legend__icon"
+                    openPanel={this.openPanel}
+                    id={2}
+                    arrow={isOpen === 2 ? 'up' : 'down'}
                   />
 
-                  {/* <div className="fill-in__items hidden collapsibles"> */}
-                  <div className='fill-in__items collapsibles'>
+                  <div className={`fill-in__items ${isOpen === 2 ? '' : 'hidden'} collapsibles`}>
+
                     <FillInItem
                       forId='full_name'
                       labelName='Nombre completo'
@@ -131,8 +119,8 @@ class App extends React.Component {
                       onChange={this.handleInputChange}
                     />
 
-                    <div className='fill-in__item'>
-                      <label className='fill-in__label' htmlFor='img-profile'>
+                    <div className="fill-in__item">
+                      <label className="fill-in__label" htmlFor="img-profile">
                         Imagen de perfil
                       </label>
                       <div className='fill-in__buttonImg-wrapper'>
@@ -192,13 +180,16 @@ class App extends React.Component {
                 </fieldset>
                 <fieldset className='form__share'>
                   <Collapsibles
-                    title='Comparte'
-                    icon='fas fa-share-alt legend__icon legend__icon--share'
+                    title="Comparte"
+                    icon="fas fa-share-alt legend__icon legend__icon--share"
+                    openPanel={this.openPanel}
+                    id={3}
+                    arrow={isOpen === 3 ? 'up' : 'down'}
                   />
-
-                  <div className='share__container hidden collapsibles'>
-                    <button className='share-button' type='button'>
-                      <i className='far fa-address-card' /> Crear tarjeta
+                  <div className={`share__container ${isOpen === 3 ? '' : 'hidden'} collapsibles`}>
+                  
+                    <button className="share-button" type="button">
+                      <i className="far fa-address-card" /> Crear tarjeta
                     </button>
                     <section className='section__twitter collapsible__hidden'>
                       <h3 className='title-twitter'>
