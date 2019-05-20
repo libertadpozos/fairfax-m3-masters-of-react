@@ -10,7 +10,28 @@ import PreviewCard from './components/PreviewCard';
 import './scss/main.scss';
 
 class App extends React.Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      isOpen: 1,
+    }
+
+    this.openPanel = this.openPanel.bind(this);
+  }
+
+  openPanel(e){
+    const target = parseInt(e.currentTarget.id);
+    this.setState((prevState, props) => {
+      let newOpen;
+      prevState.isOpen === target ? newOpen = 4 : newOpen = target;
+      return {
+        isOpen: newOpen,
+      };
+    });    
+}
+
   render() {
+    const { isOpen } = this.state;
     return (
       <div className="App">
         <header className="header wrapper">
@@ -36,25 +57,29 @@ class App extends React.Component {
                   <Collapsibles
                     title="Diseña"
                     icon="far fa-object-ungroup fa-lg legend__icon"
+                    openPanel={this.openPanel}
+                    id={1}
+                    arrow={isOpen === 1 ? 'up' : 'down'}
                   />
 
-                  {/* <label className="option__distribution hidden collapsibles" for="colors"> */}
-                  <label
-                    className="option__distribution collapsibles"
+                  <div
+                    className={`option__distribution ${isOpen === 1 ? '' : 'hidden'} collapsibles`}
                     htmlFor="colors"
                   >
-                    <p className="option__title legend__subtitle">Colores</p>
+                    <label className="option__title legend__subtitle">Colores</label>
                     <RadioButtonsList />
-                  </label>
+                  </div>
                 </fieldset>
                 <fieldset className="form__fill-in">
                   <Collapsibles
                     title="Rellena"
                     icon="far fa-keyboard legend__icon"
+                    openPanel={this.openPanel}
+                    id={2}
+                    arrow={isOpen === 2 ? 'up' : 'down'}
                   />
 
-                  {/* <div className="fill-in__items hidden collapsibles"> */}
-                  <div className="fill-in__items collapsibles">
+                  <div className={`fill-in__items ${isOpen === 2 ? '' : 'hidden'} collapsibles`}>
 
                     <FillInItem
                       forId="full_name"
@@ -130,9 +155,11 @@ class App extends React.Component {
                   <Collapsibles
                     title="Comparte"
                     icon="fas fa-share-alt legend__icon legend__icon--share"
+                    openPanel={this.openPanel}
+                    id={3}
+                    arrow={isOpen === 3 ? 'up' : 'down'}
                   />
-
-                  <div className="share__container hidden collapsibles">
+                  <div className={`share__container ${isOpen === 3 ? '' : 'hidden'} collapsibles`}>
                   
                     <button className="share-button" type="button">
                       <i className="far fa-address-card" /> Crear tarjeta
