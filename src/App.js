@@ -10,13 +10,31 @@ import PreviewCard from './components/PreviewCard';
 import './scss/main.scss';
 
 class App extends React.Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
+      // data: {
+        palette: 1,
+        name: '',
+        job: '',
+        phone: '',
+        email: '',
+        linkedin: '',
+        github: '',
+        photo: '',
+      // },
       isOpen: 1,
-    }
-
+    };
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.openPanel = this.openPanel.bind(this);
+  }
+  handleInputChange(event) {
+    const key = event.target.name;
+    this.setState({
+      [key]: event.target.value
+    });
+    console.log(key)
+    console.log(event.target.value)
   }
 
   openPanel(e){
@@ -33,14 +51,14 @@ class App extends React.Component {
   render() {
     const { isOpen } = this.state;
     return (
-      <div className="App">
-        <header className="header wrapper">
-          <section className="header--container main-container">
-            <a href="index.html">
+      <div className='App'>
+        <header className='header wrapper'>
+          <section className='header--container main-container'>
+            <a href='index.html'>
               <img
-                className="logo"
+                className='logo'
                 src={logoCard}
-                alt="logo awesome profile cards"
+                alt='logo awesome profile cards'
               />
             </a>
           </section>
@@ -52,8 +70,8 @@ class App extends React.Component {
               <fieldset className="form__preview">
                 <PreviewCard />
               </fieldset>
-              <div className="form__content">
-                <fieldset className="form__design">
+              <div className='form__content'>
+                <fieldset className='form__design'>
                   <Collapsibles
                     title="Diseña"
                     icon="far fa-object-ungroup fa-lg legend__icon"
@@ -70,7 +88,7 @@ class App extends React.Component {
                     <RadioButtonsList />
                   </div>
                 </fieldset>
-                <fieldset className="form__fill-in">
+                <fieldset className='form__fill-in'>
                   <Collapsibles
                     title="Rellena"
                     icon="far fa-keyboard legend__icon"
@@ -82,76 +100,85 @@ class App extends React.Component {
                   <div className={`fill-in__items ${isOpen === 2 ? '' : 'hidden'} collapsibles`}>
 
                     <FillInItem
-                      forId="full_name"
-                      labelName="Nombre completo"
-                      type="text"
-                      name="name"
-                      place="Sally Jill"
+                      forId='full_name'
+                      labelName='Nombre completo'
+                      type='text'
+                      name='name'
+                      place='Sally Jill'
+                      value={this.state.name}
+                      onChange={this.handleInputChange}
                     />
 
                     <FillInItem
-                      forId="job"
-                      labelName="Puesto"
-                      type="text"
-                      name="job"
-                      place="Front-end"
+                      forId='job'
+                      labelName='Puesto'
+                      type='text'
+                      name='job'
+                      place='Front-end'
+                      value={this.state.job}
+                      onChange={this.handleInputChange}
                     />
 
                     <div className="fill-in__item">
                       <label className="fill-in__label" htmlFor="img-profile">
                         Imagen de perfil
                       </label>
-                      <div className="fill-in__buttonImg-wrapper">
-                        <input
-                          className="fill-in__button fill-in__buttonLabel js__profile-trigger"
-                          id="img-profile"
-                          type="button"
-                          value="Añadir imagen"
-                          name="img-profile"
+                      <div className='fill-in__buttonImg-wrapper'>
+                        <AddImageButton
+                          className='fill-in__button fill-in__buttonLabel js__profile-trigger'
+                          value='Añadir imagen'
                         />
                         <input
-                          name="photo"
-                          type="file"
-                          id="img-selector"
-                          className="action__hiddenField js__profile-upload-btn input-update"
+                          name='photo'
+                          type='file'
+                          id='img-selector'
+                          className='action__hiddenField js__profile-upload-btn input-update'
                         />
-                        <div className="img-profile__preview js__profile-preview profile__preview" />
+                        <div className='img-profile__preview js__profile-preview profile__preview' />
                       </div>
                     </div>
                     <FillInItem
-                      forId="phone"
-                      labelName="Teléfono"
-                      type="tel"
-                      name="phone"
-                      place="612345698"
+                      forId='phone'
+                      labelName='Teléfono'
+                      type='tel'
+                      name='phone'
+                      place='612345698'
+                      value={this.state.phone}
+                      onChange={this.handleInputChange}
                     />
 
                     <FillInItem
-                      forId="email"
-                      labelName="Email"
-                      type="email"
-                      name="email"
-                      place="sally-jill@gmail.com"
+                      forId='email'
+                      labelName='Email'
+                      type='email'
+                      name='email'
+                      place='sally-jill@gmail.com'
+                      value={this.state.email}
+                      onChange={this.handleInputChange}
                     />
 
                     <FillInItem
-                      forId="linkedin"
-                      labelName="Linkedin"
-                      type="text"
-                      name="linkedin"
-                      place="sallyhill"
+                      forId='linkedin'
+                      labelName='Linkedin'
+                      type='text'
+                      name='linkedin'
+                      place='sallyhill'
+                      value={this.state.linkedin}
+                      onChange={this.handleInputChange}
                     />
 
                     <FillInItem
-                      forId="github"
-                      labelName="Github"
-                      type="text"
-                      name="github"
-                      place="sally-hill"
+                      forId='github'
+                      labelName='Github'
+                      type='text'
+                      name='github'
+                      place='sally-hill'
+                      value={this.state.github}
+                      onChange={this.handleInputChange}
                     />
                   </div>
                 </fieldset>
-                <fieldset className="form__share">
+                <fieldset className='form__share'>
                   <Collapsibles
                     title="Comparte"
                     icon="fas fa-share-alt legend__icon legend__icon--share"
@@ -164,15 +191,15 @@ class App extends React.Component {
                     <button className="share-button" type="button">
                       <i className="far fa-address-card" /> Crear tarjeta
                     </button>
-                    <section className="section__twitter collapsible__hidden">
-                      <h3 className="title-twitter">
+                    <section className='section__twitter collapsible__hidden'>
+                      <h3 className='title-twitter'>
                         La tarjeta ha sido creada:
                       </h3>
-                      <a className="title-twitter-content" href="/" />
+                      <a className='title-twitter-content' href='/' />
 
-                      <button className="button-twitter">
-                        <a className="twitter-link" href="/" target="_top">
-                          <i className="fab fa-twitter twitter-icon" />
+                      <button className='button-twitter'>
+                        <a className='twitter-link' href='/' target='_top'>
+                          <i className='fab fa-twitter twitter-icon' />
                           Compartir en Twitter
                         </a>
                       </button>
@@ -183,21 +210,21 @@ class App extends React.Component {
             </div>
           </form>
         </main>
-        <footer className="main-footer">
-          <div className="main-container">
-            <ul className="main-footer__list align-text">
-              <li className="main-footer__list-text">
+        <footer className='main-footer'>
+          <div className='main-container'>
+            <ul className='main-footer__list align-text'>
+              <li className='main-footer__list-text'>
                 Awesome profile-cards © 2019
               </li>
-              <li className="main-footer__list-adalab">
-                <img src={logoAdalab} alt="Imagen Adalab" />
+              <li className='main-footer__list-adalab'>
+                <img src={logoAdalab} alt='Imagen Adalab' />
               </li>
-              <li className="main-footer__list-logo">
-                <a href="." title="Link to Home">
+              <li className='main-footer__list-logo'>
+                <a href='.' title='Link to Home'>
                   <img
-                    className="main-footer__list-img"
+                    className='main-footer__list-img'
                     src={logoTeam}
-                    alt="Imagen Octomeow"
+                    alt='Imagen Octomeow'
                   />
                 </a>
               </li>
