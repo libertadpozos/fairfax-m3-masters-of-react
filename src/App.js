@@ -13,7 +13,7 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      // data: {
+      data: {
         palette: 1,
         name: '',
         job: '',
@@ -22,7 +22,7 @@ class App extends React.Component {
         linkedin: '',
         github: '',
         photo: '',
-      // },
+      },
       isOpen: 1,
     };
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -31,10 +31,11 @@ class App extends React.Component {
   handleInputChange(event) {
     const key = event.target.name;
     this.setState({
-      [key]: event.target.value
+      data: {
+        ...this.state.data,
+        [key]: event.target.value
+      }
     });
-    console.log(key)
-    console.log(event.target.value)
   }
 
   openPanel(e){
