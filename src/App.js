@@ -27,6 +27,7 @@ class App extends React.Component {
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.openPanel = this.openPanel.bind(this);
+    this.sendData = this.sendData.bind(this);
   }
   handleInputChange(event) {
     const key = event.target.name;
@@ -46,8 +47,29 @@ class App extends React.Component {
       return {
         isOpen: newOpen,
       };
-    });    
-}
+    });  
+  }
+
+    sendData(event){
+      const cardObject = this.state.data
+      fetch('https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/', {
+        method: 'POST',
+        body: JSON.stringify(cardObject),
+        headers:{
+          'content-type' : 'application/json'
+        },
+      })
+      .then(function(resp){
+        return resp.json();
+      })
+      .then(function(result){
+        console.log(result)
+      })
+      .catch(function(error){
+        console.log(error)
+      });
+    }
+
 
   render() {
     const { isOpen } = this.state;
@@ -189,7 +211,7 @@ class App extends React.Component {
                   />
                   <div className={`share__container ${isOpen === 3 ? '' : 'hidden'} collapsibles`}>
                   
-                    <button className="share-button" type="button">
+                    <button className="share-button" type="button" onClick={this.sendData}>
                       <i className="far fa-address-card" /> Crear tarjeta
                     </button>
                     <section className='section__twitter collapsible__hidden'>
