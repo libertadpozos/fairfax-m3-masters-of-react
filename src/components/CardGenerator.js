@@ -7,6 +7,7 @@ import logoAdalab from '../images/logo-adalab.png';
 import logoTeam from '../images/octomeow.png';
 import logoCard from '../images/tarjetas-molonas.svg';
 import PreviewCard from './PreviewCard';
+import defaultImage from './defaultImage';
 import { Link } from 'react-router-dom';
 import '../scss/main.scss';
 
@@ -22,13 +23,34 @@ class CardGenerator extends React.Component {
         email: '',
         linkedin: '',
         github: '',
-        photo: ''
+        photo: defaultImage
       },
-      isOpen: 1
+      isOpen: 1,
+      isAvatarDefault: true
     };
+
+    this.fr = new FileReader();
+    this.myFileField = React.createRef();
+
     this.handleInputChange = this.handleInputChange.bind(this);
     this.openPanel = this.openPanel.bind(this);
+    this.handleFilePicker = this.handleFilePicker.bind(this);
+    this.uploadImage = this.uploadImage.bind(this);
+    this.updateAvatar = this.updateAvatar.bind(this);
+    this.getImage = this.getImage.bind(this);
   }
+
+  updateAvatar(img) {
+    const { data } = this.state;
+    this.setState(prevState => {
+      const newProfile = { ...data, photo: img };
+      return {
+        data: newProfile,
+        isAvatarDefault: false
+      };
+    });
+  }
+
   handleInputChange(event) {
     const key = event.target.name;
     this.setState({
@@ -50,8 +72,29 @@ class CardGenerator extends React.Component {
     });
   }
 
+  handleFilePicker() {
+    this.myFileField.current.click();
+    console.log('hola');
+  }
+
+  uploadImage(e) {
+    const myFile = e.currentTarget.files[0];
+    this.fr.addEventListener('load', this.getImage);
+    this.fr.readAsDataURL(myFile);
+  }
+
+  getImage() {
+    const image = this.fr.result;
+    this.props.updateAvatar(image);
+  }
+
+  getPreview(isDefault, image) {
+    return !isDefault ? { backgroundImage: `url(${image})` } : {};
+  }
+
   render() {
-    const { isOpen } = this.state;
+    const { isOpen, isAvatarDefault } = this.state;
+    const { photo } = this.state.data;
     return (
       <div className='App'>
         <header className='header wrapper'>
@@ -70,7 +113,7 @@ class CardGenerator extends React.Component {
           <form className='form' action='' method='POST'>
             <div className='wrapper'>
               <fieldset className='form__preview'>
-                <PreviewCard />
+                <PreviewCard photo={photo} />
               </fieldset>
               <div className='form__content'>
                 <fieldset className='form__design'>
@@ -136,14 +179,20 @@ class CardGenerator extends React.Component {
                         <AddImageButton
                           className='fill-in__button fill-in__buttonLabel js__profile-trigger'
                           value='Añadir imagen'
+                          onClick={this.handleFilePicker}
                         />
                         <input
                           name='photo'
                           type='file'
                           id='img-selector'
                           className='action__hiddenField js__profile-upload-btn input-update'
+                          ref={this.myFileField}
+                          onChange={this.uploadImage}
                         />
-                        <div className='img-profile__preview js__profile-preview profile__preview' />
+                        <div
+                          className='img-profile__preview js__profile-preview profile__preview'
+                          style={this.getPreview(isAvatarDefault, photo)}
+                        />
                       </div>
                     </div>
                     <FillInItem
