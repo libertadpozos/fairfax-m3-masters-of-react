@@ -13,7 +13,8 @@ class SocialMediaList extends React.Component {
                 
                 <SocialMedia 
                     classLink='email'
-                    iconSocialMedia='far fa-envelope' 
+                    iconSocialMedia='far fa-envelope'
+                    href={this.props.hrefEmail}
                 />
                 
                 <SocialMedia

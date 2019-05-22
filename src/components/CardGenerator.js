@@ -51,7 +51,7 @@ class CardGenerator extends React.Component {
   }
 
   render() {
-    const { isOpen } = this.state;
+    const { isOpen, data } = this.state;
     return (
       <div className='App'>
         <header className='header wrapper'>
@@ -70,7 +70,11 @@ class CardGenerator extends React.Component {
           <form className='form' action='' method='POST'>
             <div className='wrapper'>
               <fieldset className='form__preview'>
-                <PreviewCard />
+                <PreviewCard 
+                  name={data.name ? data.name : 'Nombre completo'}
+                  job={data.job ? data.job : 'Front-end'}
+                  hrefEmail={data.email ? `mailto:${data.email}` : ''}
+                />
               </fieldset>
               <div className='form__content'>
                 <fieldset className='form__design'>

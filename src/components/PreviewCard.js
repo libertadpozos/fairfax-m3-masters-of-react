@@ -17,12 +17,14 @@ class PreviewCard extends React.Component {
 
                     <div className="card-preview palette--1">
                         <CardHeader
-                            defaultName="Nombre de prueba"
-                            defaultJob="Front-end developer"
+                            defaultName={this.props.name}
+                            defaultJob={this.props.job}
                         />
                         <div className="user--profile__pic js__profile-image profile__image" />
                         <div className="contact__link">
-                            <SocialMediaList />
+                            <SocialMediaList 
+                                hrefEmail={this.props.hrefEmail}
+                            />
                         </div>
                     </div>
                 </div>
