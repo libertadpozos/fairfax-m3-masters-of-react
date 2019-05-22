@@ -4,10 +4,6 @@ import SocialMediaList from './SocialMediaList';
 import ButtonReset from './ButtonReset';
 
 class PreviewCard extends React.Component {
-    constructor(props){
-        super(props);
-    }
-    
     getTheme(){
         const { palette } = this.props ;
         if (palette === 2){
