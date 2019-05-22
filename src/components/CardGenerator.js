@@ -73,7 +73,10 @@ class CardGenerator extends React.Component {
                 <PreviewCard 
                   name={data.name ? data.name : 'Nombre completo'}
                   job={data.job ? data.job : 'Front-end'}
+                  hrefPhone={data.phone ? `tel:${data.phone}` : ''}
                   hrefEmail={data.email ? `mailto:${data.email}` : ''}
+                  hrefLinkedin={data.linkedin ? `https://www.linkedin.com/in/${data.linkedin}` : ''}
+                  hrefGitHub={data.github ? `https://github.com/${data.github}` : ''}
                 />
               </fieldset>
               <div className='form__content'>

@@ -9,6 +9,7 @@ class SocialMediaList extends React.Component {
                     classLink='icon__link--mobile' 
                     iconSocialMedia='fas fa-mobile-alt' 
                     aditionalClass='pad--mobile' 
+                    href={this.props.hrefPhone}
                 />
                 
                 <SocialMedia 
@@ -27,6 +28,7 @@ class SocialMediaList extends React.Component {
                 <SocialMedia
                     classLink=''
                     iconSocialMedia='fab fa-github-alt'
+                    href={this.props.hrefGitHub}
                     target='_blank'
                 />
             </ul>

@@ -23,7 +23,10 @@ class PreviewCard extends React.Component {
                         <div className="user--profile__pic js__profile-image profile__image" />
                         <div className="contact__link">
                             <SocialMediaList 
+                                hrefPhone={this.props.hrefPhone}
                                 hrefEmail={this.props.hrefEmail}
+                                hrefLinkedin={this.props.hrefLinkedin}
+                                hrefGitHub={this.props.hrefGitHub}
                             />
                         </div>
                     </div>
