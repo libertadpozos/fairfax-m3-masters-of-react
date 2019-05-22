@@ -22,7 +22,7 @@ class App extends React.Component {
         email: '',
         linkedin: '',
         github: '',
-        photo: {fakeImage},
+        photo: fakeImage,
       },
       isOpen: 1,
       URL: '',
