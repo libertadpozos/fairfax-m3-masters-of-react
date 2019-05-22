@@ -1,0 +1,3 @@
+const fakeImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAwAAAAMCAIAAADZF8uwAAAAEklEQVR42mP8x0AYMI4qGoyKADEzC/VGGPOgAAAAAElFTkSuQmCC';
+
+export default fakeImage

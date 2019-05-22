@@ -7,6 +7,7 @@ import logoAdalab from './images/logo-adalab.png';
 import logoTeam from './images/octomeow.png';
 import logoCard from './images/tarjetas-molonas.svg';
 import PreviewCard from './components/PreviewCard';
+import fakeImage from './components/FakeImage';
 import './scss/main.scss';
 
 class App extends React.Component {
@@ -21,9 +22,10 @@ class App extends React.Component {
         email: '',
         linkedin: '',
         github: '',
-        photo: '',
+        photo: {fakeImage},
       },
       isOpen: 1,
+      URL: '',
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.openPanel = this.openPanel.bind(this);
@@ -63,7 +65,11 @@ class App extends React.Component {
         return resp.json();
       })
       .then(function(result){
-        console.log(result)
+        this.setState({
+          ...this.state.data, URL: result,
+        }
+        
+        )
       })
       .catch(function(error){
         console.log(error)
@@ -214,10 +220,12 @@ class App extends React.Component {
                     <button className="share-button" type="button" onClick={this.sendData}>
                       <i className="far fa-address-card" /> Crear tarjeta
                     </button>
-                    <section className='section__twitter collapsible__hidden'>
+                    <section className='section__twitter'>
+                    {/* collapsible__hidden */}
                       <h3 className='title-twitter'>
                         La tarjeta ha sido creada:
                       </h3>
+                      <p>link</p>
                       <a className='title-twitter-content' href='/' />
 
                       <button className='button-twitter'>
