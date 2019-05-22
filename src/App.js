@@ -228,7 +228,7 @@ class App extends React.Component {
                     <button className="share-button" type="button" onClick={this.sendData}>
                       <i className="far fa-address-card" /> Crear tarjeta
                     </button>
-                    <section className='section__twitter'>
+                    <section className='section__twitter '>
                     {/* collapsible__hidden */}
                       <h3 className='title-twitter'>
                         La tarjeta ha sido creada:
