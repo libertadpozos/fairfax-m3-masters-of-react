@@ -4,6 +4,21 @@ import SocialMediaList from './SocialMediaList';
 import ButtonReset from './ButtonReset';
 
 class PreviewCard extends React.Component {
+    constructor(props){
+        super(props);
+    }
+    
+    getTheme(){
+        const { palette } = this.props ;
+        if (palette === 2){
+            return 'palette--2';
+        } else if (palette === 3) {
+            return 'palette--3';
+        }else {
+            return '';
+        }
+    }
+
     render() {
         return (
             <section className="preview-container">
@@ -15,7 +30,7 @@ class PreviewCard extends React.Component {
                         Reset
                     </ButtonReset>
 
-                    <div className="card-preview palette--1">
+                    <div className={`card-preview palette--1 ${this.getTheme()} `}>
                         <CardHeader
                             defaultName="Nombre de prueba"
                             defaultJob="Front-end developer"

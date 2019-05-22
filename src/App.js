@@ -51,7 +51,7 @@ class App extends React.Component {
           <form className="form" action="" method="POST">
             <div className="wrapper">
               <fieldset className="form__preview">
-                <PreviewCard />
+                <PreviewCard palette={this.state.data.palette}/>
               </fieldset>
               <div className="form__content">
                 <fieldset className="form__design">
