@@ -9,6 +9,8 @@ class SocialMedia extends React.Component {
                     className={`${this.props.classLink} txt__dark`}
                     title=''
                     id='linkMobile'
+                    target={this.props.target}
+                    rel='noopener noreferrer'
                 >
                     <i className={`contact__list--icon ${this.props.iconSocialMedia}`} />
                 </a>

@@ -20,11 +20,14 @@ class SocialMediaList extends React.Component {
                 <SocialMedia
                     classLink='link__linkedin'
                     iconSocialMedia='fab fa-linkedin-in'
-                />
+                    href={this.props.hrefLinkedin}
+                    target='_blank'
+                    />
                 
                 <SocialMedia
                     classLink=''
                     iconSocialMedia='fab fa-github-alt'
+                    target='_blank'
                 />
             </ul>
         );
