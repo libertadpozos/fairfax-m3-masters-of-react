@@ -22,10 +22,10 @@ class App extends React.Component {
         email: '',
         linkedin: '',
         github: '',
-        photo: {fakeImage},
+        photo: fakeImage,
       },
       isOpen: 1,
-      URL: '',
+      url: '',
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.openPanel = this.openPanel.bind(this);
@@ -63,19 +63,27 @@ class App extends React.Component {
       })
       .then(function(resp){
         return resp.json();
-      })
-      .then(function(result){
-        this.setState({
-          ...this.state.data, URL: result,
-        }
         
-        )
+      })
+      .then((result) => {
+        console.log(result.cardURL);
+        const resultUrl = result;
+        // console.log(this.state);
+        this.setState({
+          url: result.cardURL,
+        });
       })
       .catch(function(error){
         console.log(error)
       });
     }
 
+    // saveUrl() {
+    //   console.log(this.state);
+    //   this.setState({
+    //     url: this.resultUrl.cardUrl,
+    //   });
+    // }
 
   render() {
     const { isOpen } = this.state;
@@ -225,7 +233,7 @@ class App extends React.Component {
                       <h3 className='title-twitter'>
                         La tarjeta ha sido creada:
                       </h3>
-                      <p>link</p>
+                      <a href={this.state.url} target="_blank">{this.state.url}</a>
                       <a className='title-twitter-content' href='/' />
 
                       <button className='button-twitter'>
