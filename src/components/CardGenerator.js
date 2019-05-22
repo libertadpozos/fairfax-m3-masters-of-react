@@ -74,7 +74,6 @@ class CardGenerator extends React.Component {
 
   handleFilePicker() {
     this.myFileField.current.click();
-    console.log('hola');
   }
 
   uploadImage(e) {
@@ -85,7 +84,8 @@ class CardGenerator extends React.Component {
 
   getImage() {
     const image = this.fr.result;
-    this.props.updateAvatar(image);
+    console.log(image);
+    this.updateAvatar(image);
   }
 
   getPreview(isDefault, image) {
