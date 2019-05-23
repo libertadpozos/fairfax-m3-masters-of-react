@@ -4,7 +4,7 @@ import CardGenerator from './components/CardGenerator';
 import Landing from './components/Landing';
 
 class App extends React.Component {
-  render() {
+   render() {
     return (
       <Switch>
         <Route exact path='/' component={Landing} />

@@ -4,6 +4,17 @@ import SocialMediaList from './SocialMediaList';
 import ButtonReset from './ButtonReset';
 
 class PreviewCard extends React.Component {
+  getTheme() {
+    const { palette } = this.props;
+    if (palette === 2) {
+      return 'palette--2';
+    } else if (palette === 3) {
+      return 'palette--3';
+    } else {
+      return '';
+    }
+  }
+
   render() {
     const { photo } = this.props;
     return (
@@ -26,7 +37,12 @@ class PreviewCard extends React.Component {
               style={{ backgroundImage: `url(${photo})` }}
             />
             <div className='contact__link'>
-              <SocialMediaList />
+              <SocialMediaList
+                hrefPhone={this.props.hrefPhone}
+                hrefEmail={this.props.hrefEmail}
+                hrefLinkedin={this.props.hrefLinkedin}
+                hrefGitHub={this.props.hrefGitHub}
+              />
             </div>
           </div>
         </div>
@@ -36,3 +52,5 @@ class PreviewCard extends React.Component {
 }
 
 export default PreviewCard;
+
+

@@ -26,7 +26,8 @@ class CardGenerator extends React.Component {
         photo: defaultImage
       },
       isOpen: 1,
-      isAvatarDefault: true
+      isAvatarDefault: true,
+      url: ''
     };
 
     this.fr = new FileReader();
@@ -38,6 +39,8 @@ class CardGenerator extends React.Component {
     this.uploadImage = this.uploadImage.bind(this);
     this.updateAvatar = this.updateAvatar.bind(this);
     this.getImage = this.getImage.bind(this);
+    this.sendData = this.sendData.bind(this);
+    this.handleRadioClick = this.handleRadioClick.bind(this);
   }
 
   updateAvatar(img) {
@@ -52,11 +55,14 @@ class CardGenerator extends React.Component {
 
   handleInputChange(event) {
     const key = event.target.name;
-    this.setState({
-      data: {
-        ...this.state.data,
-        [key]: event.target.value
-      }
+    const value = event.target.value;
+    this.setState(prevState => {
+      return {
+        data: {
+          ...prevState.data,
+          [key]: value
+        }
+      };
     });
   }
 
@@ -83,7 +89,6 @@ class CardGenerator extends React.Component {
 
   getImage() {
     const image = this.fr.result;
-    console.log(image);
     this.updateAvatar(image);
   }
 
@@ -91,8 +96,40 @@ class CardGenerator extends React.Component {
     return !isDefault ? { backgroundImage: `url(${image})` } : {};
   }
 
+  handleRadioClick(event) {
+    const target = parseInt(event.currentTarget.value);
+    this.setState({
+      ...this.state,
+      data: {
+        palette: target
+      }
+    });
+  }
+
+  sendData(event) {
+    const cardObject = this.state.data;
+    fetch('https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/', {
+      method: 'POST',
+      body: JSON.stringify(cardObject),
+      headers: {
+        'content-type': 'application/json'
+      }
+    })
+      .then(function(resp) {
+        return resp.json();
+      })
+      .then(result => {
+        this.setState({
+          url: result.cardURL
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
+      });
+  }
+
   render() {
-    const { isOpen, isAvatarDefault } = this.state;
+    const { isOpen, data, isAvatarDefault } = this.state;
     const { photo } = this.state.data;
     return (
       <div className='App'>
@@ -112,7 +149,21 @@ class CardGenerator extends React.Component {
           <form className='form' action='' method='POST'>
             <div className='wrapper'>
               <fieldset className='form__preview'>
-                <PreviewCard photo={photo} />
+                <PreviewCard
+                  photo={photo}
+                  name={data.name ? data.name : 'Nombre completo'}
+                  job={data.job ? data.job : 'Front-end'}
+                  hrefPhone={data.phone ? `tel:${data.phone}` : ''}
+                  hrefEmail={data.email ? `mailto:${data.email}` : ''}
+                  hrefLinkedin={
+                    data.linkedin
+                      ? `https://www.linkedin.com/in/${data.linkedin}`
+                      : ''
+                  }
+                  hrefGitHub={
+                    data.github ? `https://github.com/${data.github}` : ''
+                  }
+                />
               </fieldset>
               <div className='form__content'>
                 <fieldset className='form__design'>
@@ -133,7 +184,10 @@ class CardGenerator extends React.Component {
                     <label className='option__title legend__subtitle'>
                       Colores
                     </label>
-                    <RadioButtonsList />
+                    <RadioButtonsList
+                      handlerRadio={this.handleRadioClick}
+                      selectedPalette={this.state.data.palette}
+                    />
                   </div>
                 </fieldset>
                 <fieldset className='form__fill-in'>
@@ -251,10 +305,17 @@ class CardGenerator extends React.Component {
                     <button className='share-button' type='button'>
                       <i className='far fa-address-card' /> Crear tarjeta
                     </button>
-                    <section className='section__twitter collapsible__hidden'>
+                    <section
+                      className={`section__twitter ${
+                        this.state.url ? '' : 'collapsible__hidden'
+                      }`}
+                    >
                       <h3 className='title-twitter'>
                         La tarjeta ha sido creada:
                       </h3>
+                      <a href={this.state.url} target='_blank'>
+                        {this.state.url}
+                      </a>
                       <a className='title-twitter-content' href='/' />
 
                       <button className='button-twitter'>
