@@ -24,18 +24,23 @@ class CardGenerator extends React.Component {
         github: '',
         photo: ''
       },
-      isOpen: 1
+      isOpen: 1,
+      url: '',
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.openPanel = this.openPanel.bind(this);
+    this.sendData = this.sendData.bind(this);
     this.handleRadioClick = this.handleRadioClick.bind(this);
   }
   handleInputChange(event) {
     const key = event.target.name;
-    this.setState({
-      data: {
-        ...this.state.data,
-        [key]: event.target.value
+    const value = event.target.value;
+    this.setState(prevState => {
+      return {
+        data: {
+          ...prevState.data,
+          [key]: value
+        }
       }
     });
   }
@@ -60,6 +65,29 @@ class CardGenerator extends React.Component {
       }
     });
 
+  }
+
+  sendData(event){
+    const cardObject = this.state.data
+    fetch('https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/', {
+      method: 'POST',
+      body: JSON.stringify(cardObject),
+      headers:{
+        'content-type' : 'application/json'
+      },
+    })
+    .then(function(resp){
+      return resp.json();
+      
+    })
+    .then((result) => {
+      this.setState({
+        url: result.cardURL,
+      });
+    })
+    .catch(function(error){
+      console.log(error)
+    });
   }
 
   render() {
@@ -225,10 +253,11 @@ class CardGenerator extends React.Component {
                     <button className='share-button' type='button'>
                       <i className='far fa-address-card' /> Crear tarjeta
                     </button>
-                    <section className='section__twitter collapsible__hidden'>
+                    <section className={`section__twitter ${this.state.url ? '' : 'collapsible__hidden'}`}>
                       <h3 className='title-twitter'>
                         La tarjeta ha sido creada:
                       </h3>
+                      <a href={this.state.url} target="_blank">{this.state.url}</a>
                       <a className='title-twitter-content' href='/' />
 
                       <button className='button-twitter'>
