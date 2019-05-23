@@ -7,6 +7,7 @@ import logoAdalab from '../images/logo-adalab.png';
 import logoTeam from '../images/octomeow.png';
 import logoCard from '../images/tarjetas-molonas.svg';
 import PreviewCard from './PreviewCard';
+import defaultImage from './defaultImage';
 import { Link } from 'react-router-dom';
 import '../scss/main.scss';
 
@@ -22,16 +23,36 @@ class CardGenerator extends React.Component {
         email: '',
         linkedin: '',
         github: '',
-        photo: ''
+        photo: defaultImage
       },
       isOpen: 1,
-      url: '',
+      isAvatarDefault: true,
+      url: ''
     };
+
+    this.fr = new FileReader();
+    this.myFileField = React.createRef();
+
     this.handleInputChange = this.handleInputChange.bind(this);
     this.openPanel = this.openPanel.bind(this);
+    this.handleFilePicker = this.handleFilePicker.bind(this);
+    this.uploadImage = this.uploadImage.bind(this);
+    this.updateAvatar = this.updateAvatar.bind(this);
+    this.getImage = this.getImage.bind(this);
     this.sendData = this.sendData.bind(this);
     this.handleRadioClick = this.handleRadioClick.bind(this);
   }
+
+  updateAvatar(img) {
+    this.setState(prevState => {
+      const newProfile = { ...prevState.data, photo: img };
+      return {
+        data: newProfile,
+        isAvatarDefault: false
+      };
+    });
+  }
+
   handleInputChange(event) {
     const key = event.target.name;
     const value = event.target.value;
@@ -41,7 +62,7 @@ class CardGenerator extends React.Component {
           ...prevState.data,
           [key]: value
         }
-      }
+      };
     });
   }
 
@@ -56,42 +77,63 @@ class CardGenerator extends React.Component {
     });
   }
 
-  handleRadioClick(event){
-    const target = parseInt(event.currentTarget.value)
-    this.setState({
-      ...this.state,
-      data: {
-        palette: target,
-      }
-    });
-
+  handleFilePicker() {
+    this.myFileField.current.click();
   }
 
-  sendData(event){
-    const cardObject = this.state.data
+  uploadImage(e) {
+    const myFile = e.currentTarget.files[0];
+    this.fr.addEventListener('load', this.getImage);
+    this.fr.readAsDataURL(myFile);
+  }
+
+  getImage() {
+    const image = this.fr.result;
+    this.updateAvatar(image);
+  }
+
+  getPreview(isDefault, image) {
+    return !isDefault ? { backgroundImage: `url(${image})` } : {};
+  }
+
+  handleRadioClick(event) {
+    const target = parseInt(event.currentTarget.value);
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        data: {
+          ...prevState.data,
+          palette: target
+        }
+      };
+    });
+  }
+
+  sendData(event) {
+    const cardObject = this.state.data;
     fetch('https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/', {
       method: 'POST',
       body: JSON.stringify(cardObject),
-      headers:{
-        'content-type' : 'application/json'
-      },
+      headers: {
+        'content-type': 'application/json'
+      }
     })
-    .then(function(resp){
-      return resp.json();
-      
-    })
-    .then((result) => {
-      this.setState({
-        url: result.cardURL,
+      .then(function(resp) {
+        return resp.json();
+      })
+      .then(result => {
+        this.setState({
+          url: result.cardURL
+        });
+      })
+      .catch(function(error) {
+        console.log(error);
       });
-    })
-    .catch(function(error){
-      console.log(error)
-    });
   }
 
   render() {
-    const { isOpen, data } = this.state;
+    const { isOpen, data, isAvatarDefault } = this.state;
+    const { photo } = this.state.data;
     return (
       <div className='App'>
         <header className='header wrapper'>
@@ -110,13 +152,20 @@ class CardGenerator extends React.Component {
           <form className='form' action='' method='POST'>
             <div className='wrapper'>
               <fieldset className='form__preview'>
-                <PreviewCard 
+                <PreviewCard
                   name={data.name ? data.name : 'Nombre completo'}
                   job={data.job ? data.job : 'Front-end'}
+                  photo={photo}
                   hrefPhone={data.phone ? `tel:${data.phone}` : ''}
                   hrefEmail={data.email ? `mailto:${data.email}` : ''}
-                  hrefLinkedin={data.linkedin ? `https://www.linkedin.com/in/${data.linkedin}` : ''}
-                  hrefGitHub={data.github ? `https://github.com/${data.github}` : ''} 
+                  hrefLinkedin={
+                    data.linkedin
+                      ? `https://www.linkedin.com/in/${data.linkedin}`
+                      : ''
+                  }
+                  hrefGitHub={
+                    data.github ? `https://github.com/${data.github}` : ''
+                  }
                   palette={this.state.data.palette}
                 />
               </fieldset>
@@ -139,8 +188,8 @@ class CardGenerator extends React.Component {
                     <label className='option__title legend__subtitle'>
                       Colores
                     </label>
-                    <RadioButtonsList 
-                      handlerRadio={this.handleRadioClick} 
+                    <RadioButtonsList
+                      handlerRadio={this.handleRadioClick}
                       selectedPalette={this.state.data.palette}
                     />
                   </div>
@@ -187,14 +236,20 @@ class CardGenerator extends React.Component {
                         <AddImageButton
                           className='fill-in__button fill-in__buttonLabel js__profile-trigger'
                           value='Añadir imagen'
+                          onClick={this.handleFilePicker}
                         />
                         <input
                           name='photo'
                           type='file'
                           id='img-selector'
                           className='action__hiddenField js__profile-upload-btn input-update'
+                          ref={this.myFileField}
+                          onChange={this.uploadImage}
                         />
-                        <div className='img-profile__preview js__profile-preview profile__preview' />
+                        <div
+                          className='img-profile__preview js__profile-preview profile__preview'
+                          style={this.getPreview(isAvatarDefault, photo)}
+                        />
                       </div>
                     </div>
                     <FillInItem
@@ -254,11 +309,17 @@ class CardGenerator extends React.Component {
                     <button className='share-button' type='button' onClick={this.sendData}>
                       <i className='far fa-address-card' /> Crear tarjeta
                     </button>
-                    <section className={`section__twitter ${this.state.url ? '' : 'collapsible__hidden'}`}>
+                    <section
+                      className={`section__twitter ${
+                        this.state.url ? '' : 'collapsible__hidden'
+                      }`}
+                    >
                       <h3 className='title-twitter'>
                         La tarjeta ha sido creada:
                       </h3>
-                      <a href={this.state.url} target="_blank">{this.state.url}</a>
+                      <a href={this.state.url} target='_blank'>
+                        {this.state.url}
+                      </a>
                       <a className='title-twitter-content' href='/' />
 
                       <button className='button-twitter'>
