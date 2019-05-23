@@ -6,7 +6,12 @@ class ButtonReset extends React.Component {
         return(
             <div className="reset-button">
                 <label htmlFor="reset" className="visually-hidden">{this.props.accessibilityText}</label>
-                <button className="reset--button" type="button" id="reset">
+                <button 
+                    className="reset--button" 
+                    type="button" 
+                    id="reset"
+                    onClick={this.props.deleteData}
+                >
                     <i className={this.props.icon} />
                     {this.props.children}
                 </button>

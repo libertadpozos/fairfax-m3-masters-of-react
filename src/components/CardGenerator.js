@@ -28,6 +28,7 @@ class CardGenerator extends React.Component {
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.openPanel = this.openPanel.bind(this);
+    this.deleteData = this.deleteData.bind(this);
   }
   handleInputChange(event) {
     const key = event.target.name;
@@ -50,6 +51,24 @@ class CardGenerator extends React.Component {
     });
   }
 
+  deleteData(e) {
+    console.log(e.currentTarget);
+    
+    this.setState({
+      data: {
+        palette: 1,
+        name: '',
+        job: '',
+        phone: '',
+        email: '',
+        linkedin: '',
+        github: '',
+        photo: ''
+      }
+    });
+    
+  }
+
   render() {
     const { isOpen } = this.state;
     return (
@@ -70,7 +89,9 @@ class CardGenerator extends React.Component {
           <form className='form' action='' method='POST'>
             <div className='wrapper'>
               <fieldset className='form__preview'>
-                <PreviewCard />
+                <PreviewCard 
+                  deleteData={this.deleteData}
+                />
               </fieldset>
               <div className='form__content'>
                 <fieldset className='form__design'>

@@ -11,6 +11,7 @@ class PreviewCard extends React.Component {
                     <ButtonReset
                         accessibilityText="Botón de borrar"
                         icon="far fa-trash-alt"
+                        deleteData={this.props.deleteData}
                     >
                         Reset
                     </ButtonReset>
