@@ -12,6 +12,7 @@ class RadioButton extends React.Component {
                         name='palette'
                         value={this.props.numberPallete}
                         checked={this.props.checked}
+                        onChange={this.props.handlerRadio}
                     />
                     <span className='checkmark' id='p1' />
                 </div>
