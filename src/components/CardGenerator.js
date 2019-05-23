@@ -116,7 +116,8 @@ class CardGenerator extends React.Component {
                   hrefPhone={data.phone ? `tel:${data.phone}` : ''}
                   hrefEmail={data.email ? `mailto:${data.email}` : ''}
                   hrefLinkedin={data.linkedin ? `https://www.linkedin.com/in/${data.linkedin}` : ''}
-                  hrefGitHub={data.github ? `https://github.com/${data.github}` : ''}
+                  hrefGitHub={data.github ? `https://github.com/${data.github}` : ''} 
+                  palette={this.state.data.palette}
                 />
               </fieldset>
               <div className='form__content'>
