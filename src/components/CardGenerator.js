@@ -28,6 +28,7 @@ class CardGenerator extends React.Component {
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.openPanel = this.openPanel.bind(this);
+    this.handleRadioClick = this.handleRadioClick.bind(this);
   }
   handleInputChange(event) {
     const key = event.target.name;
@@ -48,6 +49,17 @@ class CardGenerator extends React.Component {
         isOpen: newOpen
       };
     });
+  }
+
+  handleRadioClick(event){
+    const target = parseInt(event.currentTarget.value)
+    this.setState({
+      ...this.state,
+      data: {
+        palette: target,
+      }
+    });
+
   }
 
   render() {
@@ -98,7 +110,10 @@ class CardGenerator extends React.Component {
                     <label className='option__title legend__subtitle'>
                       Colores
                     </label>
-                    <RadioButtonsList />
+                    <RadioButtonsList 
+                      handlerRadio={this.handleRadioClick} 
+                      selectedPalette={this.state.data.palette}
+                    />
                   </div>
                 </fieldset>
                 <fieldset className='form__fill-in'>
