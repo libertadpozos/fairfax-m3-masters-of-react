@@ -251,7 +251,7 @@ class CardGenerator extends React.Component {
                       isOpen === 3 ? '' : 'hidden'
                     } collapsibles`}
                   >
-                    <button className='share-button' type='button'>
+                    <button className='share-button' type='button' onClick={this.sendData}>
                       <i className='far fa-address-card' /> Crear tarjeta
                     </button>
                     <section className={`section__twitter ${this.state.url ? '' : 'collapsible__hidden'}`}>
