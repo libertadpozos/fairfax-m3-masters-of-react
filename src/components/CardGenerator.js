@@ -41,9 +41,8 @@ class CardGenerator extends React.Component {
   }
 
   updateAvatar(img) {
-    const { data } = this.state;
     this.setState(prevState => {
-      const newProfile = { ...data, photo: img };
+      const newProfile = { ...prevState.data, photo: img };
       return {
         data: newProfile,
         isAvatarDefault: false
