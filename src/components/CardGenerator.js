@@ -98,11 +98,14 @@ class CardGenerator extends React.Component {
 
   handleRadioClick(event) {
     const target = parseInt(event.currentTarget.value);
-    this.setState({
-      ...this.state,
-      data: {
-        palette: target
-      }
+    this.setState(prevState => {
+      return {
+        ...prevState,
+        data: {
+          ...prevState.data,
+          palette: target
+        }
+      };
     });
   }
 
@@ -150,9 +153,9 @@ class CardGenerator extends React.Component {
             <div className='wrapper'>
               <fieldset className='form__preview'>
                 <PreviewCard
-                  photo={photo}
                   name={data.name ? data.name : 'Nombre completo'}
                   job={data.job ? data.job : 'Front-end'}
+                  photo={photo}
                   hrefPhone={data.phone ? `tel:${data.phone}` : ''}
                   hrefEmail={data.email ? `mailto:${data.email}` : ''}
                   hrefLinkedin={
@@ -163,6 +166,7 @@ class CardGenerator extends React.Component {
                   hrefGitHub={
                     data.github ? `https://github.com/${data.github}` : ''
                   }
+                  palette={this.state.data.palette}
                 />
               </fieldset>
               <div className='form__content'>

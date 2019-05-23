@@ -27,10 +27,10 @@ class PreviewCard extends React.Component {
             Reset
           </ButtonReset>
 
-          <div className='card-preview palette--1'>
+          <div className={`card-preview palette--1 ${this.getTheme()}`}>
             <CardHeader
-              defaultName='Nombre de prueba'
-              defaultJob='Front-end developer'
+              defaultName={this.props.name}
+              defaultJob={this.props.job}
             />
             <div
               className='user--profile__pic js__profile-image profile__image'
@@ -52,5 +52,3 @@ class PreviewCard extends React.Component {
 }
 
 export default PreviewCard;
-
-
