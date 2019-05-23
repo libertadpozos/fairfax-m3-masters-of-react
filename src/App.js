@@ -7,7 +7,6 @@ import logoAdalab from './images/logo-adalab.png';
 import logoTeam from './images/octomeow.png';
 import logoCard from './images/tarjetas-molonas.svg';
 import PreviewCard from './components/PreviewCard';
-import fakeImage from './components/FakeImage';
 import './scss/main.scss';
 
 class App extends React.Component {
@@ -22,7 +21,7 @@ class App extends React.Component {
         email: '',
         linkedin: '',
         github: '',
-        photo: fakeImage,
+        photo: '',
       },
       isOpen: 1,
       url: '',
@@ -33,10 +32,12 @@ class App extends React.Component {
   }
   handleInputChange(event) {
     const key = event.target.name;
-    this.setState({
-      data: {
-        ...this.state.data,
-        [key]: event.target.value
+    this.setState(prevState => {
+      return {
+        data: {
+          ...prevState.data,
+          [key]: event.target.value
+        }
       }
     });
   }
@@ -66,9 +67,7 @@ class App extends React.Component {
         
       })
       .then((result) => {
-        console.log(result.cardURL);
         const resultUrl = result;
-        // console.log(this.state);
         this.setState({
           url: result.cardURL,
         });
@@ -77,13 +76,6 @@ class App extends React.Component {
         console.log(error)
       });
     }
-
-    // saveUrl() {
-    //   console.log(this.state);
-    //   this.setState({
-    //     url: this.resultUrl.cardUrl,
-    //   });
-    // }
 
   render() {
     const { isOpen } = this.state;
@@ -228,8 +220,7 @@ class App extends React.Component {
                     <button className="share-button" type="button" onClick={this.sendData}>
                       <i className="far fa-address-card" /> Crear tarjeta
                     </button>
-                    <section className='section__twitter '>
-                    {/* collapsible__hidden */}
+                    <section className={`section__twitter ${this.state.url ? '' : 'collapsible__hidden'}`}>
                       <h3 className='title-twitter'>
                         La tarjeta ha sido creada:
                       </h3>
