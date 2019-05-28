@@ -8,6 +8,7 @@ import logoTeam from '../images/octomeow.png';
 import logoCard from '../images/tarjetas-molonas.svg';
 import PreviewCard from './PreviewCard';
 import defaultImage from './defaultImage';
+import ButtonTwitter from './TwitterShareButton';
 import { Link } from 'react-router-dom';
 import '../scss/main.scss';
 
@@ -41,6 +42,7 @@ class CardGenerator extends React.Component {
     this.getImage = this.getImage.bind(this);
     this.sendData = this.sendData.bind(this);
     this.handleRadioClick = this.handleRadioClick.bind(this);
+    this.callTwitter = this.callTwitter.bind(this);
   }
 
   updateAvatar(img) {
@@ -109,6 +111,16 @@ class CardGenerator extends React.Component {
     });
   }
 
+  callTwitter(finalUrl){
+    finalUrl = this.state.url;
+    const twitterText = 'Esta es mi nueva tarjeta de contacto:';
+    const linkTextTrans = encodeURIComponent(twitterText);
+    const linkCardTransform = encodeURIComponent(finalUrl);
+    const twitterLink ='https://twitter.com/intent/tweet?';
+    const twitterFull = `${twitterLink}text=${linkTextTrans}&url=${linkCardTransform}`;
+    return twitterFull;
+  }
+
   sendData(event) {
     const cardObject = this.state.data;
     fetch('https://us-central1-awesome-cards-cf6f0.cloudfunctions.net/card/', {
@@ -132,7 +144,7 @@ class CardGenerator extends React.Component {
   }
 
   render() {
-    const { isOpen, data, isAvatarDefault } = this.state;
+    const { isOpen, data, isAvatarDefault} = this.state;
     const { photo } = this.state.data;
     return (
       <div className='App'>
@@ -322,12 +334,15 @@ class CardGenerator extends React.Component {
                       </a>
                       <a className='title-twitter-content' href='/' />
 
-                      <button className='button-twitter'>
+                      {/* <button className='button-twitter'>
                         <a className='twitter-link' href='/' target='_top'>
                           <i className='fab fa-twitter twitter-icon' />
                           Compartir en Twitter
                         </a>
-                      </button>
+                      </button> */}
+                       <ButtonTwitter className='button-twitter'
+                          url={this.callTwitter()} 
+                        />
                     </section>
                   </div>
                 </fieldset>
