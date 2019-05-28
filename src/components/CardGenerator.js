@@ -332,15 +332,7 @@ class CardGenerator extends React.Component {
                       <a href={this.state.url} target='_blank'>
                         {this.state.url}
                       </a>
-                      <a className='title-twitter-content' href='/' />
-
-                      {/* <button className='button-twitter'>
-                        <a className='twitter-link' href='/' target='_top'>
-                          <i className='fab fa-twitter twitter-icon' />
-                          Compartir en Twitter
-                        </a>
-                      </button> */}
-                       <ButtonTwitter className='button-twitter'
+                         <ButtonTwitter className='button-twitter'
                           url={this.callTwitter()} 
                         />
                     </section>
