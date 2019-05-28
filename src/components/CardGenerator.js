@@ -79,8 +79,6 @@ class CardGenerator extends React.Component {
   }
 
   handleButtonReset(e) {
-    console.log(e.currentTarget);
-    
     this.setState({
       data: {
         palette: 1,
@@ -90,11 +88,11 @@ class CardGenerator extends React.Component {
         email: '',
         linkedin: '',
         github: '',
-        photo: ''
+        photo: defaultImage
       }
     });
   }
-    
+
   handleFilePicker() {
     this.myFileField.current.click();
   }
@@ -233,7 +231,7 @@ class CardGenerator extends React.Component {
                       type='text'
                       name='name'
                       place='Sally Jill'
-                      value={this.state.name}
+                      value={this.state.data.name}
                       onChange={this.handleInputChange}
                     />
 
@@ -243,7 +241,7 @@ class CardGenerator extends React.Component {
                       type='text'
                       name='job'
                       place='Front-end'
-                      value={this.state.job}
+                      value={this.state.data.job}
                       onChange={this.handleInputChange}
                     />
 
@@ -277,7 +275,7 @@ class CardGenerator extends React.Component {
                       type='tel'
                       name='phone'
                       place='612345698'
-                      value={this.state.phone}
+                      value={this.state.data.phone}
                       onChange={this.handleInputChange}
                     />
 
@@ -287,7 +285,7 @@ class CardGenerator extends React.Component {
                       type='email'
                       name='email'
                       place='sally-jill@gmail.com'
-                      value={this.state.email}
+                      value={this.state.data.email}
                       onChange={this.handleInputChange}
                     />
 
@@ -297,7 +295,7 @@ class CardGenerator extends React.Component {
                       type='text'
                       name='linkedin'
                       place='sallyhill'
-                      value={this.state.linkedin}
+                      value={this.state.data.linkedin}
                       onChange={this.handleInputChange}
                     />
 
@@ -307,7 +305,7 @@ class CardGenerator extends React.Component {
                       type='text'
                       name='github'
                       place='sally-hill'
-                      value={this.state.github}
+                      value={this.state.data.github}
                       onChange={this.handleInputChange}
                     />
                   </div>
