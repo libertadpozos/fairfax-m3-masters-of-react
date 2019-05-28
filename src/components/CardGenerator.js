@@ -28,7 +28,7 @@ class CardGenerator extends React.Component {
     };
     this.handleInputChange = this.handleInputChange.bind(this);
     this.openPanel = this.openPanel.bind(this);
-    this.deleteData = this.deleteData.bind(this);
+    this.handleButtonReset = this.handleButtonReset.bind(this);
   }
   handleInputChange(event) {
     const key = event.target.name;
@@ -51,7 +51,7 @@ class CardGenerator extends React.Component {
     });
   }
 
-  deleteData(e) {
+  handleButtonReset(e) {
     console.log(e.currentTarget);
     
     this.setState({
@@ -90,7 +90,7 @@ class CardGenerator extends React.Component {
             <div className='wrapper'>
               <fieldset className='form__preview'>
                 <PreviewCard 
-                  deleteData={this.deleteData}
+                  deleteData={this.handleButtonReset}
                 />
               </fieldset>
               <div className='form__content'>
