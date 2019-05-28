@@ -35,6 +35,7 @@ class CardGenerator extends React.Component {
 
     this.handleInputChange = this.handleInputChange.bind(this);
     this.openPanel = this.openPanel.bind(this);
+    this.handleButtonReset = this.handleButtonReset.bind(this);
     this.handleFilePicker = this.handleFilePicker.bind(this);
     this.uploadImage = this.uploadImage.bind(this);
     this.updateAvatar = this.updateAvatar.bind(this);
@@ -74,6 +75,21 @@ class CardGenerator extends React.Component {
       return {
         isOpen: newOpen
       };
+    });
+  }
+
+  handleButtonReset(e) {
+    this.setState({
+      data: {
+        palette: 1,
+        name: '',
+        job: '',
+        phone: '',
+        email: '',
+        linkedin: '',
+        github: '',
+        photo: defaultImage
+      }
     });
   }
 
@@ -153,6 +169,7 @@ class CardGenerator extends React.Component {
             <div className='wrapper'>
               <fieldset className='form__preview'>
                 <PreviewCard
+                  deleteData={this.handleButtonReset}
                   name={data.name ? data.name : 'Nombre completo'}
                   job={data.job ? data.job : 'Front-end'}
                   photo={photo}
@@ -214,7 +231,7 @@ class CardGenerator extends React.Component {
                       type='text'
                       name='name'
                       place='Sally Jill'
-                      value={this.state.name}
+                      value={this.state.data.name}
                       onChange={this.handleInputChange}
                     />
 
@@ -224,7 +241,7 @@ class CardGenerator extends React.Component {
                       type='text'
                       name='job'
                       place='Front-end'
-                      value={this.state.job}
+                      value={this.state.data.job}
                       onChange={this.handleInputChange}
                     />
 
@@ -258,7 +275,7 @@ class CardGenerator extends React.Component {
                       type='tel'
                       name='phone'
                       place='612345698'
-                      value={this.state.phone}
+                      value={this.state.data.phone}
                       onChange={this.handleInputChange}
                     />
 
@@ -268,7 +285,7 @@ class CardGenerator extends React.Component {
                       type='email'
                       name='email'
                       place='sally-jill@gmail.com'
-                      value={this.state.email}
+                      value={this.state.data.email}
                       onChange={this.handleInputChange}
                     />
 
@@ -278,7 +295,7 @@ class CardGenerator extends React.Component {
                       type='text'
                       name='linkedin'
                       place='sallyhill'
-                      value={this.state.linkedin}
+                      value={this.state.data.linkedin}
                       onChange={this.handleInputChange}
                     />
 
@@ -288,7 +305,7 @@ class CardGenerator extends React.Component {
                       type='text'
                       name='github'
                       place='sally-hill'
-                      value={this.state.github}
+                      value={this.state.data.github}
                       onChange={this.handleInputChange}
                     />
                   </div>
@@ -317,7 +334,7 @@ class CardGenerator extends React.Component {
                       <h3 className='title-twitter'>
                         La tarjeta ha sido creada:
                       </h3>
-                      <a href={this.state.url} target='_blank'>
+                      <a href={this.state.url} target='_blank' rel="noopener noreferrer">
                         {this.state.url}
                       </a>
                       <a className='title-twitter-content' href='/' />

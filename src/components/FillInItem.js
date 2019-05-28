@@ -15,6 +15,7 @@ class FillInItem extends React.Component {
           placeholder={this.props.place}
           value={this.props.value}
           onChange={this.props.onChange}
+          data-id={this.props.forId}
         />
       </div>
     );
