@@ -14,7 +14,6 @@ class PreviewCard extends React.Component {
       return '';
     }
   }
-
   render() {
     const { photo } = this.props;
     return (
@@ -23,6 +22,7 @@ class PreviewCard extends React.Component {
           <ButtonReset
             accessibilityText='Botón de borrar'
             icon='far fa-trash-alt'
+            deleteData={this.props.deleteData}
           >
             Reset
           </ButtonReset>
